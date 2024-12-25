@@ -1,0 +1,320 @@
+
+    *{
+        color:var(--bs-secondary);
+    }
+
+    body{
+        background:var(--bs-dark);
+    }
+    .navbar-nav a{
+        margin-left:30px;
+    }
+    a{
+        text-decoration:none;
+        cursor:pointer;
+        text-transform:capitalize;
+    }
+    .container-fluid:nth-child(odd){
+        background:var(--bs-black2);
+    }
+    .navbar-brand a{
+        cursor:pointer;
+        opacity:.8;
+        font-weight:200;
+        color:var(--bs-light)!important;
+        font-family:poppins;
+    }
+    .bg-social{
+        position: relative;
+        top:0;
+        transition:.5s;
+        background:var(--bs-black3);
+        box-shadow:0px 0px 3px var(--bs-dark);
+    }
+    .bg-social:hover{
+        background:var(--bs-dark);
+        }
+
+    .bg-social i,.bg-social h6{
+        color:var(--bs-light);
+        transition:.5s;
+        position: relative;
+        z-index:1;
+    }
+
+    .myimage img{
+        border-radius:250px;
+        filter:saturate(0) brightness(0.7);
+        animation:imgAnim 5s infinite alternate ease;
+    }
+    @keyframes imgAnim {
+        from{
+            transform:translateY(3%);
+        }
+        to{
+            transform:translateY(-3%);
+        }
+    }
+    .bg-social:hover i{
+        color: var(--bs-success) !important;
+    }
+
+    ::-webkit-scrollbar {
+        width:9px; 
+        height:10px; 
+    }
+    
+
+    ::-webkit-scrollbar-track {
+        z-index:-10;
+        background-color: #0a0a0a; 
+        border-radius: 10px; 
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color:var(--bs-success); 
+        border-radius: 10px; 
+    }
+   
+
+    /* For All Page Mobile View */
+    .section-padding{
+        padding:30px 15px;
+    }
+    .section-padding h1{
+        padding:20px 0px 10px;
+        text-align:center;
+        font-weight:100;
+        font-size:30px !important;
+    }
+    .section-padding h1>span{
+        color:var(--bs-success);
+        font-weight:700!important;
+    }
+    .home-section-padding{
+        padding:100px 15px 50px;
+    }
+    .socialmedia-linkss i{
+        font-size:23px;
+    }
+    .socialmedia-linkss .icon1{
+        color:var(--bs-success);
+    }
+    .socialmedia-linkss .icon2{
+        color:var(--bs-warning);
+    }
+    .socialmedia-linkss .icon3{
+        color:var(--bs-primary);
+    }
+    .socialmedia-linkss .icon4{
+        color:var(--bs-secondary);
+    }
+    .socialmedia-linkss i:hover{
+        top:-3px;
+    }
+    
+    .myHeaders{
+        z-index:100;
+        position:relative;
+    }
+    .myNavbar{
+        box-shadow:0px 0px 5px var(--bs-black2);
+        border-bottom:1px solid #2f2e2e;
+    }
+    .myBoxxes .card{
+        position: relative;
+        top:0px;
+        transition:.5s;
+        margin:7px 0;
+        background: var(--bs-black3) !important;
+        border:1px solid #202020;
+    }
+    .myBoxxes .card:hover{
+        box-shadow:0px 0px 2px rgb(0, 0, 0);
+        background: var(--bs-dark) !important;
+    }
+
+    .myBoxxes .card .badge{
+        background: var(--bs-black2) !important;
+    }
+    .myBoxxes .card:hover .badge{
+        background: var(--bs-success)!important;
+    }
+    .myBoxxes1 .card,.myBoxxes .card{
+        margin:13px 0;
+        cursor:pointer;
+    }
+    .myBoxxes1 .card{
+        background: var(--bs-black3) !important;
+    }
+    /* Larger than 992px View */
+    .myBoxxes12 .card{
+        cursor:pointer;
+        background:var(--bs-black2);
+        transition:.8s;
+    }
+    
+
+    .myBoxxes12 img{
+        filter:brightness(0.5);
+        height:140px;
+    }
+    .myBoxxes12:hover img{
+        filter:brightness(1);
+    }
+   
+    .myBoxxes12 .url{
+        position:absolute;
+        top:40%;
+        left:38%;
+        border-radius:60px;
+        background:rgb(0, 106, 0);
+        width:130px;
+
+    }
+    .myBoxxes12:hover .url{
+        background:var(--bs-dark);
+    }
+    .experience{
+        background:var(--bs-black3);
+    }
+    .experience .grade{
+        font-style:italic;
+        font-weight:700;
+    }
+    .experience .role{
+        font-weight:100!important;
+    }
+    .experience .year{
+        font-weight:700!important;
+        font-style:italic;
+    }
+    .experience .myBtn{
+        font-weight:800!important;
+        border-radius:30px;
+    }
+    
+    .myAbout .name{
+        font-size:13px;
+        text-transform:uppercase;
+        font-weight:700;
+        letter-spacing:5px;
+        margin-bottom:10px;
+    }
+    .myAbout .role{
+        font-weight:100;
+    }
+    .myAbout p{
+        font-style:italic;
+    }
+    @media (min-width:992px) {
+        .experience .grade{
+            font-size:23px;
+        }
+        .myBoxxes12 img{
+            height:260px;
+        }
+        .myimage img{
+            border-radius:220px;
+        }
+        
+        .home-section-padding{
+            padding:130px 15px 50px;
+        }
+        .navbar-nav a{
+            font-family:poppins;
+            color: var(--bs-light) !important;
+            margin-left:10px;
+            border-radius:40px;
+            padding:4px 20px!important;
+            position: relative;
+            font-weight:500;
+            transition:.5s ease;
+            opacity:0.65;
+        }
+        .navbar-nav a::after{
+            content:'';
+            background:var(--bs-success)!important;
+            width:0;
+            left:20px;
+            bottom:-3px;
+            right:10px;
+            border-radius:40px;
+            height:3px;
+            position: absolute;
+            transition:.5s ease;
+        }
+        .navbar-nav a:hover::after{
+            width:35px;
+        }
+        .navbar-nav a:hover,.navbar-nav .active,.navbar-nav a:active,.navbar-nav a:focus{
+            transition:.5s ease;
+            opacity:1;
+            color:var(--bs-light)!important;
+        }
+        .navbar-nav .active::after{
+            width:35px;
+        }
+        .navbar-brand a{
+            cursor:pointer;
+            font-size:32px;
+            opacity:.8;
+            font-weight:200;
+            color:var(--bs-light)!important;
+            font-family:poppins;
+        }
+        .section-padding{
+            padding:50px;
+        }
+        
+        .section-padding h1,.home-section-padding h1{
+            font-family:Poppins;
+            font-size:25px;
+            font-weight:300;
+        }
+        .section-padding h1>span,.home-section-padding h1>span{
+            color:var(--bs-success);
+            font-weight:600;
+            margin-left:4px;
+            border-radius:40px;
+        }
+        .myBoxxes .card:hover{
+            top:-10px;
+        }
+        
+        
+          
+       
+        .myAbout .role{
+            font-size:50px;
+            background:var(--bs-secondary);
+            background-clip:text;
+            color:transparent;
+            margin-bottom:10px;
+            font-weight:600;
+        }
+        .myAbout p{
+            margin-bottom:10px;
+            font-style:italic;
+            font-size:18px;
+        }
+        .socialmedia-linkss{
+            display:flex;
+        }
+        .socialmedia-linkss i{
+           
+            text-align:center;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:38px;
+            position: relative;
+            padding:4px 10px;
+            top:0px;
+            transition:.3s;
+        }
+
+        
+    }  
+
+  
