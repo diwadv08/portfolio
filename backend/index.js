@@ -6,13 +6,8 @@ const express=require('express');
 const mongoose=require('mongoose');
 const app=express();
 const cors = require('cors');
-const corsOption={
-    origin: process.env.APP_URL, // Frontend React app URL
-    methods: "GET,POST,PUT,DELETE", // Allowed methods
-    credentials: true, // Allow cookies (if needed)
-}
+
 app.use(cors());
-app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGO_DB);
