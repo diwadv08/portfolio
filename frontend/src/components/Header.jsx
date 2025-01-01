@@ -11,7 +11,7 @@ function Header() {
   return (
     <Container fluid className='myHeaders'>
     <Navbar expand="lg" className="bg-dark navbar-dark py-2 myNavbar fixed-top w-100">
-        <Navbar.Brand><Link to={myLinks[0].toLowerCase()}   className='ms-4' offset={-70} duration={scrollSpeed} spy={true} smooth>My Portfolio</Link></Navbar.Brand>
+        <Navbar.Brand><Link to={myLinks[0].toLowerCase()}   className='ms-4' offset={-70} duration={scrollSpeed} spy={true} smooth>Diwa</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

@@ -3,6 +3,8 @@ import {Container} from 'react-bootstrap';
 import myLinks from '../common/links';
 import { useState,useEffect } from 'react';
 import url from '../url/nodeFile';
+import { motion } from 'framer-motion';
+import { zoomIn } from '../animation/variant';
 function Contact() {
   let[contact,setContact]=useState();
   let contact_names=['Github','Linked In','Instagram','Call'];
@@ -34,7 +36,10 @@ function Contact() {
           </div>
                   {usernames.map((e,index)=>{
                     return (
-                        <div className="col-lg-3 my-md-3 my-2 col-md-6 col-12" title={'Click Here'} key={index}>
+                        <motion.div initial="hidden"// Starting state: hidden and slightly below
+                                                               variants={zoomIn(.8)} // Final state: fully visible and in place
+                                                               whileInView={"show"}
+                                                               viewport={{once:true,amount:0.3}}  className="col-lg-3 my-md-3 my-2 col-md-6 col-12" title={'Click Here'} key={index}>
                           <div className={"card "+bg[0]+" py-md-3 py-0"}>
                             <a href={contact_links[index]} target='_blank'>
                               <div className="d-flex justify-content-center align-items-center">
@@ -43,7 +48,7 @@ function Contact() {
                               </div>
                             </a>
                           </div>
-                      </div>
+                      </motion.div>
                     )
                   })}
        </div>

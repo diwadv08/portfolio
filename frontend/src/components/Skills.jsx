@@ -3,6 +3,8 @@ import {Container,Row,Col} from 'react-bootstrap';
 import {  Pagination, Scrollbar, A11y ,Autoplay,EffectFade} from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import {motion} from "framer-motion";
+import { zoomIn } from '../animation/variant';
 //backend url
 import url from '../url/nodeFile';
 import myLinks from '../common/links';
@@ -30,7 +32,12 @@ function Skills() {
       
         {skill_Data && skill_Data.map((e,index)=>{
           return (
-            <div className="col-lg-4 col-md-6 myBoxxes" key={index}>
+            <motion.div 
+            initial="hidden"// Starting state: hidden and slightly below
+            variants={zoomIn(1)} // Final state: fully visible and in place
+            whileInView={"show"}
+            viewport={{once:true,amount:0.3}}
+            className="col-lg-4 col-md-6 myBoxxes" key={index}>
               <div className="card">
                 <div className="row p-3">
                   <div className="col-md-4 col-6">
@@ -47,7 +54,7 @@ function Skills() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           )
         })}
     </div>

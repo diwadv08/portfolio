@@ -3,6 +3,8 @@ import {Container,Row,Col} from 'react-bootstrap';
 import myLinks from '../common/links';
 import { useState,useEffect } from 'react';
 import url from '../url/nodeFile';
+import { motion } from 'framer-motion';
+import { flip, pump, zoomIn } from '../animation/variant';
 function Experience() {
   
   let[experienceData,setexperienceData]=useState();
@@ -24,16 +26,20 @@ function Experience() {
               </div>
               </div>
               
-              <div className="row text-center mx-md-0 mx-2">
+              <div className="row text-center mx-md-0 mx-2 d-flex">
               {experienceData?experienceData.map((e,index)=>{
                 return (
+                  <motion.div initial="hidden"// Starting state: hidden and slightly below
+                                               variants={zoomIn(0.5)} // Final state: fully visible and in place
+                                               whileInView={"show"}
+                                               viewport={{once:true,amount:0.3}} className="row">
+                    <div className="col-lg-3"></div>
                     <div className="col-lg-6 col-md-6 ps-md-5 ps-0" key={index}>
                     <div className="row p-1">
                       <div className="col-md-12 mt-md-0 d-flex flex-column experience p-5" style={{gap:'15px'}}>
                         <h5 className='mb-md-0 grade'>{e.company_name}</h5>
                         <h2 className='role mb-md-0 text-success'>{e.role}</h2>
                         <h6 className='year'>{e.from}-{e.to}</h6>
-                        <button className='myBtn btn text-dark px-3 py-1 bg-success'>{e.experience} years</button>
                       </div>
                     </div>
                     {(index===0)?'':<div className="d-md-none">
@@ -41,6 +47,9 @@ function Experience() {
                     </div>}
                     
                     </div>
+                  <div className="col-lg-3"></div>
+                  </motion.div>
+
                 )
               }).reverse():''}
               </div>
