@@ -10,7 +10,9 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-mongoose.connect(process.env.MONGO_DB);
+mongoose.connect(process.env.MONGO_DB,{
+    sslValidate: true
+});
 
 app.use('/images',express.static('uploads'));
 const skill_routes=require('./routes/skill_route');
