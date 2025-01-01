@@ -11,10 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGO_DB,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    tls: true,
-    tlsInsecure: false, // Set to true only for testing (not recommended for production)
+    useNewUrlParser: true, useUnifiedTopology: true 
 });
 
 app.use('/images',express.static('uploads'));
