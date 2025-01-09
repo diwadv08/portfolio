@@ -96,9 +96,9 @@ function Projects() {
       grabCursor={true}
       centeredSlides={true}
       coverflowEffect={{
-        rotate: -50,
+        rotate: -160,
         stretch: 0,
-        depth: 100,
+        depth: 1500,
         modifier: 1,
         slideShadows: true,
       }}
@@ -114,7 +114,7 @@ function Projects() {
                   </div>
                   <div className="d-flex align-items-center justify-content-between pt-3">
                     <a><i className='text-light'>{e.category}</i></a>
-                    <a href={e.url} target='_blank' className='url text-center text-white mt-0 px-3'>Click Here<i className='fa arrow-right text-light'></i></a>
+                    <a href={e.url} target='_blank' className='url text-center text-white mt-0 px-3 py-1'>Click Here</a>
                   </div>
                 </div>
               </div>

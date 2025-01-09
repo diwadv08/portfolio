@@ -44,7 +44,7 @@ function Skills() {
                     <img src={url+'/images/'+e.image} style={{height:'40px'}}/>
                   </div>
                   <div className="col-md-8 col-6 text-end mt-2">
-                    <span className='badge' style={{background:'black',color:'#e3e3e3',padding:'5px 25px',borderRadius:'30px',fontWeight:'600',textTransform:'uppercase'}}>{e.level}</span>
+                    <span className='badge level'>{e.level}</span>
                   </div>
                   <div className="col-12 mt-3">
                     <p style={{height:'160px',overflow:'auto',fontSize:'14px'}} className='text-secondary'>{(e.description.length>letterLimits)?e.description.substr(0,letterLimits)+'....':e.description}</p>
