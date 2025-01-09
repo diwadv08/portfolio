@@ -54,10 +54,10 @@
     @keyframes imgAnim {
         from{
             transform:translateY(2%);
-            filter:brightness(0.6) saturate(0) blur(.2px);
+            filter:brightness(0.6) saturate(0);
         }
         to{
-            filter:brightness(.8) saturate(0);
+            filter:brightness(0.8) saturate(0);
             transform:translateY(-2%);
         }
     }
