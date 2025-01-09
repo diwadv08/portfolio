@@ -7,4 +7,8 @@ export default defineConfig({
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   },
+  server: {
+    host: '0.0.0.0',
+    port: 5174 // Use the correct port number, either dynamic or fixed
+  }
 })
