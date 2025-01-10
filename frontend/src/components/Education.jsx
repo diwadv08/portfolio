@@ -24,9 +24,9 @@ function Education() {
               <h1>My <span>Education</span></h1>
           </div>
           <motion.div initial="hidden"// Starting state: hidden and slightly below
-                                       variants={flip(1)} // Final state: fully visible and in place
-                                       whileInView={"show"}
-                                       viewport={{once:true,amount:0.3}} className="row px-md-0 mx-md-0 mx-1">
+            variants={flip(1)} // Final state: fully visible and in place
+            whileInView={"show"}
+            viewport={{once:true,amount:0.3}} className="row px-md-0 mx-md-0 mx-1">
               {educationData?educationData.map((e,index)=>{
                 return (
                   <div className="col-lg-6 col-md-6" key={index}>
@@ -36,9 +36,7 @@ function Education() {
                         <h6>{e.college} on <span className='text-success'>{e.year}</span></h6>
                       </div>
                     </div>
-                    {(index===0)?'':<div className="d-md-none">
-                      <hr />
-                    </div>}
+                    
                     
                   </div>
                 )
