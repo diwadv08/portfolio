@@ -13,6 +13,7 @@
         text-decoration:none;
         cursor:pointer;
         text-transform:capitalize;
+        cursor:pointer;
     }
     .container-fluid:nth-child(odd){
         background:var(--bs-black2);
@@ -127,15 +128,11 @@
         border-bottom:1px solid #2f2e2e;
     }
     .myBoxxes .card{
-        position: relative;
-        top:0px;
         transition:.5s;
-        margin:7px 0;
         background: var(--bs-black3) !important;
         border:1px solid #3a3a3a;
     }
     .myBoxxes .card:hover{
-        box-shadow:0px 0px 2px rgb(0, 0, 0);
         background: var(--bs-dark) !important;
         border:1px solid #505050;
     }
@@ -149,8 +146,6 @@
         text-transform:uppercase;
         box-shadow:inset 0 0 2px #797979;
         transition:.8s;
-        position: relative;
-        top:0;
         border-radius:40px;
         transform:rotate(0) scale(1);
     }
@@ -160,7 +155,6 @@
        
     }
     .myBoxxes1 .card,.myBoxxes .card{
-        margin:13px 0;
         cursor:pointer;
     }
     .myBoxxes1 .card{
@@ -168,7 +162,7 @@
     }
     /* Larger than 992px View */
 
-    .myBoxxes12 .card{
+    .myBoxxes12 .row{
         cursor:pointer;
         background:var(--bs-black2);
         transition:.8s;
@@ -178,36 +172,41 @@
     
     .myBoxxes12 img{
         filter:brightness(0.5);
-        height:180px;
+        height:190px;
     }
     .swiper-slide-visible{
         transform: scale(1) !important;
     }
-    .swiper-slide-prev,.swiper-slide-next{
-        transform:scale(0.7)!important; 
-    }
+   
     .swiper-slide-visible img,.myBoxxes12:hover img{
         filter:brightness(1);
     }
-    .swiper-slide-prev img,.swiper-slide-next img{
-        filter:brightness(0.5);
-        transform:scale(1); 
-    }
+  
     .myBoxxes12 .url{
         position: relative;
         z-index:11;
         border-radius:60px;
+        color:silver;
+        background:var(--bs-black3);
+        border:1px solid;
+        font-weight:600;
+    }  
+    .myBoxxes12 .url1{
+        font-size:12px;
+        position: relative;
+        z-index:11;
+        border-radius:5px;
         color:grey;
         border:1px solid;
-    }  
-    .myBoxxes12:hover .url,.swiper-slide-visible .url{
-        color: var(--bs-success) !important;
     }
-    .swiper-slide-prev .url,.swiper-slide-next .url{
-        background:black;
-        color: grey !important;
-        font-weight:600;
+    .myBoxxes12 .mydiv{
+        width:75%;
     }
+    .myBoxxes12:hover .url{
+        background: green !important;
+        border-color:var(--bs-success);
+    }
+  
     .experience{
         background:var(--bs-black3);
     }
@@ -325,9 +324,7 @@
             margin-left:4px;
             border-radius:40px;
         }
-        .myBoxxes .card:hover{
-            top:-10px;
-        }       
+            
         .myAbout .role{
             font-size:50px;
             background:var(--bs-secondary);

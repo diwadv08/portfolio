@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 function AddProjects() {
 
-  const catgories=['Live Projects','Local Projects','React Project'];
+  const catgories=['HTML','CSS','Bootstrap','Javascript','JQuery','PHP','MySql','React JS','Node JS','Express JS','Mongo DB','Next JS'];
 
   let nav=useNavigate();
   let defaultData={
@@ -58,21 +58,8 @@ function AddProjects() {
                                     <input type="text" className='form-control' name='url' value={data.url} onChange={changeBox} placeholder='Enter url'/>
                                 </div>
                                 <div className="col-12 mb-3">
-                                    <label htmlFor="">Category</label>
-                                    <select name="category" id="" className='form-select' onChange={changeBox}>
-                                        {catgories.map((e)=>{
-                                            if(e===data.category){
-                                                return (
-                                                    <option value={e} defaultValue={true}>{e}</option>
-                                                )
-                                            }
-                                            else{
-                                                return (
-                                                    <option value={e}>{e}</option>
-                                                )
-                                            }
-                                        })}
-                                    </select>
+                                    <label htmlFor="">Tools used</label>
+                                    <input type="text" name='category' placeholder='Ex:- HTML---CSS---Bootstrap'  className='form-control'/>
                                 </div>
                             </div>
                         </div>

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import {Container,Row,Col} from 'react-bootstrap';
-import {  Pagination, Scrollbar, A11y ,Autoplay,EffectFade} from 'swiper/modules';
+import {Container} from 'react-bootstrap';
+import {  Pagination, Scrollbar, A11y ,Autoplay,EffectFade, EffectCoverflow, Virtual} from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import {motion} from "framer-motion";
-import { zoomIn } from '../animation/variant';
+import { useRef } from 'react';
 //backend url
 import url from '../url/nodeFile';
 import myLinks from '../common/links';
@@ -23,27 +22,55 @@ function Skills() {
     })  
   },[])
 
-  
+  const swiperRef = useRef(null); 
+  const handleMouseEnter = () => {
+      if (swiperRef.current) {
+        swiperRef.current.swiper.autoplay.stop(); 
+      }
+    };
+  const handleMouseLeave = () => {
+      if (swiperRef.current) {
+        swiperRef.current.swiper.autoplay.start(); 
+      }
+  };
   
   return (
     <Container fluid id={myLinks[1].toLowerCase()}>
     <div className="row section-padding">
       <h1>My <span>Skills</span></h1>
+      <Swiper
+      breakpoints={{
+        320: { slidesPerView: 1 }, // 1 slide on small screens (default)
+        540: { slidesPerView: 1 }, // 1 slide on small screens (default)
+        640: { slidesPerView: 2 }, // 1 slide on small screens (default)
+        768: { slidesPerView: 4 }, // 2 slides on medium screens
+        1024: { slidesPerView: 3}, // 3 slides on large screens
+      }}
+      ref={swiperRef}
+      speed={1900}
+      direction="horizontal"
+      modules={[Pagination, Scrollbar, A11y,Autoplay ]}
+      spaceBetween={30}
+      loop={true}  // Infinite loop
+      autoplay={{
+        delay:0, 
+      }}
       
+    >
+      
+
+
         {skill_Data && skill_Data.map((e,index)=>{
           return (
-            <motion.div 
-            initial="hidden"// Starting state: hidden and slightly below
-            variants={zoomIn(1)} // Final state: fully visible and in place
-            whileInView={"show"}
-            viewport={{once:true,amount:0.3}}
-            className="col-lg-4 col-md-6 myBoxxes" key={index}>
+            <SwiperSlide key={index}  onMouseEnter={handleMouseEnter} 
+            onMouseLeave={handleMouseLeave} className='myBoxxes'>
               <div className="card">
                 <div className="row p-3">
                   <div className="col-md-4 col-6">
                     <img src={url+'/images/'+e.image} style={{height:'40px'}}/>
                   </div>
                   <div className="col-md-8 col-6 text-end mt-2">
+                    
                     <span className='badge level'>{e.level}</span>
                   </div>
                   <div className="col-12 mt-3">
@@ -54,9 +81,11 @@ function Skills() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </SwiperSlide>
           )
         })}
+    </Swiper>
+
     </div>
    </Container>
   )
