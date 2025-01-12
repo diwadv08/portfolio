@@ -75,7 +75,7 @@ function AddAbout() {
                     <div className="row">
                         <div className="col-lg-9">
                             <div className="row">
-                                <input type="text" name='_id' value={data._id} onChange={changeBox} />
+                                <input type="text" name='_id' value={data._id} onChange={changeBox} hidden/>
                                 <div className="col-lg-4 mb-3">
                                     <label htmlFor="">Name</label>
                                     <input type="text" className='form-control' name='name' value={data.name} onChange={changeBox} placeholder='Enter Name'/>
