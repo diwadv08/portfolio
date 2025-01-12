@@ -6,9 +6,6 @@ const About_model=mongoose.model("About",{
     mobile:String,
     email:String,
     image:String,
-    insta_url:String,
-    linkedin_url:String,
-    github_url:String,
 })
 
 module.exports=About_model;

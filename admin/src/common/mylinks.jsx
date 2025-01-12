@@ -1,8 +1,11 @@
 
 export let nav_links =[
     {
-        name:"Home",
-        url:'/'
+        name:"Info",
+        url:'/about',
+        add:'/add_about',
+        edit:'/edit_about',
+        delete:'/delete_about',
     },
     {
         name:"Projects",
@@ -32,11 +35,5 @@ export let nav_links =[
         edit:'/edit_experience',
         delete:'/delete_experience',
     },
-    {
-        name:"About",
-        url:'/about',
-        add:'/add_about',
-        edit:'/edit_about',
-        delete:'/delete_about',
-    },
+    
 ]

@@ -11,7 +11,7 @@ function Header() {
   return (
     <Container fluid className='myHeaders mb-5'>
     <Navbar expand="lg" className="bg-dark navbar-dark py-2 myNavbar fixed-top w-100 headers px-2">
-        <Navbar.Brand><Link to={nav_links[0].name.toLowerCase()}>
+        <Navbar.Brand><Link to={"/"} onClick={()=>{setActive()}}>
         <h1 className='ms-4 text-success'>Diwa</h1>
         </Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -19,7 +19,7 @@ function Header() {
           <Nav className="ms-auto">
             {nav_links.map((e,index)=>{
                 return <div key={index}>
-                    <Link className={(isActive===e.name)?'active nav-link':'nav-link'} to={e.url} >{e.name}</Link>
+                    <Link className={(isActive===e.name)?'active nav-link':'nav-link'} onClick={()=>{setActive(e.name)}} to={e.url} >{e.name}</Link>
                 </div>
             })}
            

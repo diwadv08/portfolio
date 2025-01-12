@@ -46,22 +46,28 @@ function About() {
                              whileInView={"show"}
                              viewport={{once:false,amount:0.3}} className="col-md-6 h-100 text-md-center text-center align-self-center" >
                   <div className="myimage">
-                      <img src={url+'/images/'+e.image} className='text-end' alt="" width={'75%'} />
+                      <img src={url+'/images/'+e.image} className='text-end' alt=""  />
                   </div>
                 </motion.div>
                 <motion.div initial="hidden"// Starting state: hidden and slightly below
                              variants={left(1)} // Final state: fully visible and in place
                              whileInView={"show"}
                              viewport={{once:false,amount:0.3}} className="col-md-6 pt-3 ps-4 px-md-0 align-self-center myAbout text-md-start text-center">
-                  <h4 className='name'><span className='ps-1'>Diwakar M</span></h4>
-                  <h1 className='role'>MERN <span>Stack Developer</span></h1>
-                  <p className='ps-1'>Developing the impossible</p>
-                  <div className='socialmedia-linkss mt-4'>
-                    <i className='fa fa-database icon1 me-2'></i>
-                    <i className='fa-brands fa-node-js icon2 me-2'></i>
-                    <i className='fa-brands fa-react icon3 me-2'></i>
-                    <i className='fa-brands fa-node icon4 me-2'></i>
-                  </div>
+                              
+                            <h4 className='name mt-4 mt-lg-0'><span className='ps-1'>{e.name?e.name.toUpperCase():''}</span></h4>
+                            <h1 className='role'>{e.title?e.title.toUpperCase():''}</h1>
+                            <p className='ps-1'>{e.description?e.description:''}</p>
+                            
+                            <div className='socialmedia-linkss mt-4'>
+                              <i className='fa fa-database icon1 me-2'></i>
+                              <i className='fa-brands fa-node-js icon2 me-2'></i>
+                              <i className='fa-brands fa-react icon3 me-2'></i>
+                              <i className='fa-brands fa-node icon4 me-2'></i>
+                            </div>
+                            <div className="div d-lg-flex mt-3 justify-content-end pe-lg-5">
+                                  <p><b><a href={"tel:"+e.mobile} className='text-success'> {e.mobile}</a></b></p>
+                                  <p className='ms-lg-5'><b><a style={{textTransform:'lowercase!important'}} href={"mailto:"+e.email} className='text-secondary'> {e.email}</a></b></p>
+                              </div>
                 </motion.div>
                
               </div>)

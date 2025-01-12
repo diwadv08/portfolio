@@ -1,7 +1,7 @@
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Login from './pages/Login'
 import AddSkills from './pages/Skills/AddSkills'
-import AddAbout from './pages/About/AddAbout'
+import AddAbout from './pages/About/EditAbout'
 
 import AddExperience from './pages/Experience/AddExperience'
 import AddProjects from './pages/Project/AddProjects'
@@ -17,6 +17,7 @@ import Education from './pages/Education/Education'
 import AddEducation from './pages/Education/AddEducation'
 import Experience from './pages/Experience/Experience'
 import EditExperience from './pages/Experience/EditExperience'
+import About from './pages/About/About'
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,10 @@ function App() {
       <br/>
       <Routes>
         <Route path={'/'} element={<Login/>}/>
+        <Route path={nav_links[0].url} element={<About/>}/>
+        <Route path={nav_links[0].edit+"/:id"} element={<AddAbout/>}/>
+
+
         <Route path={nav_links[1].add} element={<AddProjects/>}/>
         <Route path={nav_links[1].url} element={<ViewProject/>}/>
         <Route path={nav_links[1].edit+"/:id"} element={<EditProject/>}/>
@@ -34,7 +39,6 @@ function App() {
         <Route path={nav_links[2].edit+"/:id"} element={<EditSkill/>}/>
 
 
-        <Route path={nav_links[5].add} element={<AddAbout/>}/>
 
         <Route path={nav_links[3].add} element={<AddEducation/>}/>
         <Route path={nav_links[3].edit+"/:id"} element={<EditEducation/>}/>

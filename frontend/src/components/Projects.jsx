@@ -32,10 +32,12 @@ function Projects() {
   return (
     <Container fluid id={myLinks[2].toLowerCase()}>
     <div className="row section-padding">
-      <div className="col-12">
-        <h1><span>Projects</span></h1>
-      </div>
       <div className="row">
+        <div className="col-12">
+          <h1><span>Projects</span></h1>
+        </div>
+      </div>
+      <div className="row m-auto p-0 m-0">
         {projectData ? projectData.map((e,index)=>{
           let catg=e.category?e.category.split(','):'';
           
@@ -49,7 +51,7 @@ function Projects() {
                   <div className="col-12">
                   <img src={url+'/images/'+e.image} style={def_img}/>
                   </div>
-                  <div className="d-flex align-items-center justify-content-between pt-3">
+                  <div className="pt-3">
                     <div className="mydiv">
                       {catg.length>0?catg.map((e)=>{
                         return (
@@ -57,7 +59,9 @@ function Projects() {
                         )
                       }):''}
                     </div>
-                    <a href={e.url} target='_blank' className='url text-center text-silver mt-0 px-lg-3 px-3 py-1'>Click Here </a>
+                  </div>
+                  <div className='text-end mt-3 mt-md-0'>
+                  <a href={e.url} target='_blank' className='url text-center text-silver mt-0 px-lg-3 px-3 py-1'>Visit Site</a>
                   </div>
               </div>
             </motion.div>

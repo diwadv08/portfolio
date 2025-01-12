@@ -42,7 +42,7 @@ a{
     color: white !important;
     font-weight:700;
 }
-.navbar-nav a:hover{
+.navbar-nav a:hover,.navbar-nav .active{
     background:white;
     color:var(--bs-success)!important;
 }
