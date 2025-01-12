@@ -1,11 +1,10 @@
 import React from 'react'
 import { useState } from 'react';
 import { Container} from 'react-bootstrap';
-import file_upload from "../assets/images/file-upload.png";
-import url from '../url/nodeFile';
+import file_upload from "../../assets/images/file-upload.png";
+import url from '../../url/nodeFile';
 import axios from "axios";
 function AddAbout() {
- 
   let defaultData={
     name:'',
     description:'',

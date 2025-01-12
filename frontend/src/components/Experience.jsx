@@ -22,7 +22,7 @@ function Experience() {
        <div className='row section-padding'>
               <div className="row">
                 <div className="col-12">
-                  <h1>My <span>Experience</span></h1>
+                  <h1><span>Experience</span></h1>
               </div>
               </div>
               

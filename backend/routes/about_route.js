@@ -1,5 +1,6 @@
 const express=require('express');
 const router=express.Router();
+const fs=require("fs");
 const multer_upload=require('../multer/multer');
 const About_model=require('../models/about');
 router.post('/about_add',multer_upload.single('image'),(req,res)=>{

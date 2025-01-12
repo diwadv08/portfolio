@@ -129,18 +129,30 @@
     }
     .myBoxxes .card{
         transition:.5s;
-        background: var(--bs-black3) !important;
-        border:1px solid #3a3a3a;
-    }
-    .myBoxxes .card:hover{
         background: var(--bs-dark) !important;
-        border:1px solid #505050;
+        border:1px solid #3a3a3a;
+        height:190px;
+        overflow:hidden;
+        position: relative;
+        top:0;
     }
+    .myBoxxes .card .myDivContent{
+        position: relative;
+        transition:.8s;
+        top:0px;
+    }
+    
+    .myBoxxes .card:hover .myDivContent{
+        background: var(--bs-dark) !important;
+        top:-190px;
+        transition:1s;
+    }
+
     .myBoxxes .card .badge{
         background: green !important;
         background:black;
         color:#e3e3e3;
-        padding:7px 20px;
+        padding:4px 20px;
         border-radius:0;
         font-weight:600;
         text-transform:uppercase;
@@ -182,30 +194,54 @@
         filter:brightness(1);
     }
   
-    .myBoxxes12 .url{
-        position: relative;
-        z-index:11;
-        border-radius:60px;
-        color:silver;
-        background:var(--bs-black3);
-        border:1px solid;
-        font-weight:600;
-    }  
+    
     .myBoxxes12 .url1{
         font-size:12px;
+        font-weight:700;
         position: relative;
         z-index:11;
-        border-radius:5px;
         color:grey;
+        border-radius: 3px;
         border:1px solid;
+    }
+    .myBoxxes12 .url1:hover{
+        color:var(--bs-black2);
+        background:#a0a5a0;
+        border:1px solid #a0a5a0;
     }
     .myBoxxes12 .mydiv{
         width:75%;
     }
+    .myBoxxes12 .url{
+        position: relative;
+        z-index:11;
+        border-radius:60px;
+        color:var(--bs-success);
+        border:1px solid;
+        font-weight:600;
+        border-color:var(--bs-success);
+    }  
     .myBoxxes12:hover .url{
-        background: green !important;
+        color: silver;
+        background:green;
         border-color:var(--bs-success);
     }
+    .myBoxxes12 .url:hover{
+        background: green;
+        color: white ;;
+        border-color:var(--bs-success);
+    }
+    
+    .myBoxxes12 .url::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0%;
+        height: 3px;
+        background-color: #333;
+        transition: all 0.3s ease;
+      }
   
     .experience{
         background:var(--bs-black3);

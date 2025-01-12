@@ -33,26 +33,31 @@ function Projects() {
     <Container fluid id={myLinks[2].toLowerCase()}>
     <div className="row section-padding">
       <div className="col-12">
-        <h1><span>Projects</span>-{projectData ?projectData.length:''}</h1>
+        <h1><span>Projects</span></h1>
       </div>
       <div className="row">
         {projectData ? projectData.map((e,index)=>{
+          let catg=e.category?e.category.split(','):'';
+          
           return (
             <motion.div 
             initial="hidden"// Starting state: hidden and slightly below
             variants={zoomIn(1)} // Final state: fully visible and in place
             whileInView={"show"}
-            viewport={{once:true,amount:0.3}} className="col-lg-6 myBoxxes12 my-1">
+            viewport={{amount:0.3,once:true}} className="col-lg-6 myBoxxes12 my-1">
                 <div className="row px-1 py-3">
                   <div className="col-12">
                   <img src={url+'/images/'+e.image} style={def_img}/>
                   </div>
                   <div className="d-flex align-items-center justify-content-between pt-3">
                     <div className="mydiv">
-                      <a href={e.url} target='_blank' className='url1 text-center text-silver mt-0 px-2 py-1 me-2'>Click Here </a>
-                      <a href={e.url} target='_blank' className='url1 text-center text-silver mt-0 px-2 py-1 me-2'>Click Here </a>
+                      {catg.length>0?catg.map((e)=>{
+                        return (
+                          <a  target='_blank' className='url1 text-center mt-0 px-2 py-1 me-2'>{e}</a>
+                        )
+                      }):''}
                     </div>
-                    <a href={e.url} target='_blank' className='url text-center text-silver mt-0 px-3 py-1'>Click Here </a>
+                    <a href={e.url} target='_blank' className='url text-center text-silver mt-0 px-lg-3 px-3 py-1'>Click Here </a>
                   </div>
               </div>
             </motion.div>

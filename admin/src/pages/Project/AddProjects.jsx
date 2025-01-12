@@ -1,17 +1,17 @@
 import React from 'react'
 import { useState } from 'react';
 import { Container} from 'react-bootstrap';
-import file_upload from "../assets/images/file-upload.png";
-import url from '../url/nodeFile';
+import file_upload from "../../assets/images/slider.jpg";
+import url from '../../url/nodeFile';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { nav_links } from '../../common/mylinks';
 function AddProjects() {
 
-  const catgories=['HTML','CSS','Bootstrap','Javascript','JQuery','PHP','MySql','React JS','Node JS','Express JS','Mongo DB','Next JS'];
 
   let nav=useNavigate();
   let defaultData={
-    category:catgories[0],
+    category:'',
     url:'',
     image:'',
   }
@@ -22,6 +22,7 @@ function AddProjects() {
     setData((prev)=>(
         {...prev,[e.target.name]:e.target.value}
     ))
+    
   }
   const SubmitFun=async(e)=>{
     e.preventDefault();
@@ -35,7 +36,7 @@ function AddProjects() {
         'Content-Type': 'multipart/form-data',
     },
     });
-    nav('/')
+    nav(nav_links[1].url)
   }
 
   const changeImage=(e)=>{
@@ -51,7 +52,7 @@ function AddProjects() {
                 </div>
                 <form onSubmit={SubmitFun}>
                     <div className="row">
-                        <div className="col-lg-9">
+                        <div className="col-lg-12">
                             <div className="row">
                                 <div className="col-12 mb-3">
                                     <label htmlFor="">URL</label>
@@ -59,11 +60,11 @@ function AddProjects() {
                                 </div>
                                 <div className="col-12 mb-3">
                                     <label htmlFor="">Tools used</label>
-                                    <input type="text" name='category' placeholder='Ex:- HTML---CSS---Bootstrap'  className='form-control'/>
+                                    <input type="text" name='category' value={data.category}  onChange={changeBox} placeholder='Ex:- HTML---CSS---Bootstrap'  className='form-control'/>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-3 text-lg-start">
+                        <div className="col-lg-12 text-lg-start">
                             <label htmlFor="image-upload">
                                 <img src={image?URL.createObjectURL(image):file_upload} style={{width:'100%',background:'white',height:'220px'}} alt="" />
                             </label>

@@ -1,10 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import { Container} from 'react-bootstrap';
-import file_upload from "../assets/images/file-upload.png";
-import url from '../url/nodeFile';
+import url from '../../url/nodeFile';
 import axios from "axios";
-import { useEffect } from 'react';
 import {useNavigate} from "react-router-dom";
 
 function AddExperience() {
@@ -49,9 +47,12 @@ function AddExperience() {
                 <div className='row bg-dark p-5 text-light' style={{borderRadius:"30px",boxShadow:"0px 0px 30px grey"}}>
                     <div className="col-12 mb-2">
                         <h4>Add Experience</h4>
+                        
                     </div>
                     <form onSubmit={SubmitFun}>
                         <div className="row">
+                            <input type="text" name="_id" id=""  value={data._id} className='form-control' hidden onChange={changeBox} />
+
                             <div className="col-lg-12">
                                 <div className="row">
                                     <div className="col-md-4 mb-3">

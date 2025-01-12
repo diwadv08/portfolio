@@ -1,19 +1,35 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Container} from 'react-bootstrap';
-import file_upload from "../assets/images/file-upload.png";
-import url from '../url/nodeFile';
+import url from '../../url/nodeFile';
 import axios from "axios";
-import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { nav_links } from '../../common/mylinks';
 
-function AddEducation() {
+function EditEducation() {
+    let _id=useParams();
+    _id=_id.id;
       let defaultData={
+        _id:'',
         grade:'',
         year:'',
         mark:'',
         college:''
       }
+      let nav=useNavigate();
+
+   
+
+      
+    
       const [data,setData]=useState(defaultData)
+      useEffect(()=>{
+        fetch(`${url}/education/${_id}`)
+        .then((data)=>(data.json()))
+        .then((datas)=>{
+            setData(datas)
+        })  
+      },[])
       const changeBox=(e)=>{    
         setData((prev)=>(
             {...prev,[e.target.name]:e.target.value}
@@ -26,23 +42,24 @@ function AddEducation() {
         e.preventDefault();
         const form = new FormData();
     
+        form.append('id',data._id);
         form.append('grade',data.grade);
         form.append('year',data.year);
         form.append('mark',data.mark);
         form.append('college',data.college);
-        const response = await axios.post(url+'/education_add', form, {
+        await axios.post(url+'/education_edit', form, {
         headers: {
            'Content-Type': 'application/json'
         },
         });
-        console.log(response.data);
+        nav(nav_links[3].url)
       }
     
         return (
             <Container className='w-75 my-4' style={{height:"450px"}}>
                 <div className='row bg-dark p-5 text-light' style={{borderRadius:"30px",boxShadow:"0px 0px 30px grey"}}>
                     <div className="col-12 mb-2">
-                        <h4>Add Education Details</h4>
+                        <h4>Edit Education Details</h4>
                     </div>
                     <form onSubmit={SubmitFun}>
                         <div className="row">
@@ -50,6 +67,7 @@ function AddEducation() {
                                 <div className="row">
                                     <div className="col-12 mb-3">
                                         <label htmlFor="">Course Name</label>
+                                        <input type="text" className='form-control' name='_id' value={data._id} onChange={changeBox} placeholder='Enter Course Name'hidden />
                                         <input type="text" className='form-control' name='grade' value={data.grade} onChange={changeBox} placeholder='Enter Course Name'/>
                                     </div>
 
@@ -80,4 +98,4 @@ function AddEducation() {
         )
 }
 
-export default AddEducation
+export default EditEducation
