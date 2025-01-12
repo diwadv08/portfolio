@@ -64,10 +64,6 @@ function About() {
                               <i className='fa-brands fa-react icon3 me-2'></i>
                               <i className='fa-brands fa-node icon4 me-2'></i>
                             </div>
-                            <div className="div d-lg-flex mt-3 justify-content-end pe-lg-5">
-                                  <p><b><a href={"tel:"+e.mobile} className='text-success'> {e.mobile}</a></b></p>
-                                  <p className='ms-lg-5'><b><a style={{textTransform:'lowercase!important'}} href={"mailto:"+e.email} className='text-secondary'> {e.email}</a></b></p>
-                              </div>
                 </motion.div>
                
               </div>)

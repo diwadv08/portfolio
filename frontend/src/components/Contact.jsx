@@ -7,11 +7,11 @@ import { motion } from 'framer-motion';
 import { zoomIn } from '../animation/variant';
 function Contact() {
   let[contact,setContact]=useState();
-  let contact_names=['Github','Linked In','Instagram','Call'];
+  let contact_names=['Github','Linked In','Email','Call'];
   let bg=['bg-social'];
-  let icons=['github','linkedin','instagram','whatsapp'];
-  let usernames=['diwadv08','dv813','dv813','9489460029'];
-  let contact_links=['https://github.com/diwadv08','https://www.linkedin.com/in/dv813','https://www.instagram.com/dv_813/','tel:'+usernames[3]];
+  let icons=['github','linkedin','gmail','whatsapp'];
+  let usernames=['diwadv08','dv813','diwadv813','9489460029'];
+  let contact_links=['https://github.com/diwadv08','https://www.linkedin.com/in/dv813','mailto:'+usernames[2]+'@gmail.com','tel:'+usernames[3]];
 
   let links=['']
   useEffect(()=>{
