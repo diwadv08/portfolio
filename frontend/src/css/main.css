@@ -147,8 +147,6 @@
     }
 
     .myBoxxes .card .badge{
-        background: green !important;
-        background:black;
         color:#e3e3e3;
         padding:4px 20px;
         border-radius:0;

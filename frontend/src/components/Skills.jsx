@@ -33,7 +33,7 @@ function Skills() {
         swiperRef.current.swiper.autoplay.start(); 
       }
   };
-  
+  let box="14px";
   return (
     <Container fluid id={myLinks[1].toLowerCase()}>
     <div className="row section-padding">
@@ -69,11 +69,15 @@ function Skills() {
                   <div className="col-md-4 col-6">
                   </div>
                   <div className="col-md-8 col-6 text-end mt-2">                    
-                    <span className='badge level'>{e.level}</span>
+                    {
+                    (e.level=="Expert")?<span className='badge level bg-success'>{e.level}</span>:(e.level=="Intermediate")?<span className='badge text-dark level bg-secondary'>{e.level}</span>:(e.level=="Beginner")?<span className='badge level bg-danger text-dark'>{e.level}</span>:''
+                    }
                   </div>
                   <div className="col-12 d-flex flex-column align-items-center justify-content-center">
                     <img src={url+'/images/'+e.image} style={{height:'70px'}}/>
-                    <span className='mt-3' style={{background:e.color,color:'white',fontWeight:'700',padding:'1px 30px',borderRadius:'30px'}}>{e.language.toUpperCase()}</span>
+                    <div className="d-flex align-items-center mt-3">
+                      <span style={{background:e.color,width:box,height:box,marginRight:'5px',borderRadius:box}}></span><span style={{color:'white',fontWeight:'400'}}>{e.language}</span>
+                    </div>
                   </div>
                   <div className="col-12 mt-5">
                     <p>{(e.description.length>letterLimits)?e.description.substr(0,letterLimits)+'....':e.description}</p>

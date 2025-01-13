@@ -55,7 +55,7 @@ function About() {
                              viewport={{once:false,amount:0.3}} className="col-md-6 pt-3 ps-4 px-md-0 align-self-center myAbout text-md-start text-center">
                               
                             <h4 className='name mt-4 mt-lg-0'><span className='ps-1'>{e.name?e.name.toUpperCase():''}</span></h4>
-                            <h1 className='role'>MERN <span>STACK DEVELOPER</span></h1>
+                            <h1 className='role'>MERN <span>Stack Developer</span></h1>
                             <p className='ps-1'>{e.description?e.description:''}</p>
                             
                             <div className='socialmedia-linkss mt-4'>
