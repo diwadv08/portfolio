@@ -49,7 +49,9 @@ function Projects() {
             viewport={{amount:0.3,once:true}} className="col-lg-6 myBoxxes12 my-1">
                 <div className="row px-1 py-3">
                   <div className="col-12">
-                  <img src={url+'/images/'+e.image} style={def_img}/>
+                  <a href={e.url} target='_blank'>
+                    <img src={url+'/images/'+e.image} style={def_img}/>
+                  </a>
                   </div>
                   <div className="pt-3">
                     <div className="mydiv">
