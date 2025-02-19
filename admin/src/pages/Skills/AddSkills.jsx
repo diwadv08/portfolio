@@ -6,12 +6,15 @@ import url from '../../url/nodeFile';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { nav_links } from '../../common/mylinks';
+import { cloud_url } from '../../url/cloudUrl';
 function AddSkills() {
+  
   const options=['Beginner','Intermediate','Expert'];
-  const languages=['HTML','CSS','Bootstrap','Javascript','JQuery','PHP','MySql','React JS','Node JS','Express JS','Mongo DB','Next JS'];
+  
+  const [subBtn,seytSubBtn]=useState('Add Skill');
   let nav=useNavigate();
   let defaultData={
-    language:'HTML',
+    language:'',
     image:'',
     description:'',
     color:'#1ea100',
@@ -27,13 +30,29 @@ function AddSkills() {
   }
   const SubmitFun=async(e)=>{
     e.preventDefault();
+    seytSubBtn('Uploading...')
+    const cloud_upload = new FormData();
     const form = new FormData();
-    form.append('image', image);  // Ensure 'image' field is correctly named
+
+    cloud_upload.append('file', image);  // Ensure 'image' field is correctly named
+    cloud_upload.append('upload_preset','portfolio' );  // Ensure 'image' field is correctly named
+    try {
+        const response = await axios.post(cloud_url, cloud_upload, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    });
+    form.append('image', response.data.url);
+
+    } catch (error) {
+        console.error('Error uploading image and data:', error);
+    }
+
     form.append('language', data.language);
     form.append('description', data.description);
     form.append('level', data.level);
     form.append('color', data.color);
-
+    
     try {
         const response = await axios.post(url+'/skills_add', form, {
         headers: {
@@ -64,20 +83,7 @@ function AddSkills() {
                             <div className="row">
                                 <div className="col-md-4 my-2">
                                     <label htmlFor="" className='mb-2'>Language</label>
-                                    <select onChange={changeBox} name="language"  className='form-select'  id="">
-                                        {languages.map((e,index)=>{
-                                            if(e===data.language){
-                                                return(
-                                                    <option value={e} key={index} defaultValue={true}>{e}</option>
-                                                )
-                                            }
-                                            else{
-                                                return(
-                                                    <option value={e} key={index}>{e}</option>
-                                                )
-                                            }
-                                        })}
-                                    </select>
+                                    <input type="text" className='form-control' placeholder='Enter Language' name='language' value={data.language}  onChange={changeBox} />
                                 </div>
                                 <div className="col-md-4 my-2">
                                     <label htmlFor="" className='mb-2'>Level</label>
@@ -106,14 +112,16 @@ function AddSkills() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-6  text-lg-end">
+                        <div className="col-lg-3 col-md-6  text-lg-end">
                             <label htmlFor="image-upload">
                                 <img src={image?URL.createObjectURL(image):file_upload} style={{width:'100%',background:'white',height:'200px',marginTop:'30px'}} alt="" />
                             </label>
                             <input type="file" onChange={changeImage}  className='form-control' accept="image/*" id='image-upload' name='image' hidden/>
                         </div>
                         <div className="col-12 mt-3 mb-0">
-                            <input type="submit" className='btn btn-success form-control'/>
+                            <button type="submit" className='btn btn-success form-control'>
+                                {subBtn}
+                            </button>
                         </div>
                     </div>
                 </form>

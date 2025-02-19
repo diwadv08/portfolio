@@ -37,7 +37,7 @@ function Projects() {
           <h1><span>Projects</span></h1>
         </div>
       </div>
-      <div className="row m-auto p-0 m-0">
+      <div className="row m-auto p-0 m-0 w-100">
         {projectData ? projectData.map((e,index)=>{
           let catg=e.category?e.category.split(','):'';
           
@@ -47,23 +47,25 @@ function Projects() {
             variants={zoomIn(1)} // Final state: fully visible and in place
             whileInView={"show"}
             viewport={{amount:0.3,once:true}} className="col-lg-6 myBoxxes12 my-1">
-                <div className="row px-1 py-3">
+                <div className="row px-1 pt-3">
                   <div className="col-12">
                   <a href={e.url} target='_blank'>
-                    <img src={url+'/images/'+e.image} style={def_img}/>
+                    <img src={e.image} style={def_img}/>
                   </a>
                   </div>
-                  <div className="pt-3">
-                    <div className="mydiv">
-                      {catg.length>0?catg.map((e)=>{
+                  <div className="col-lg-12 my-3">
+                      <div className="row">
+                        <div className="col-lg-9">
+                        {catg.length>0?catg.map((e)=>{
                         return (
-                          <a  target='_blank' className='url1 text-center mt-0 px-2 py-1 me-2'>{e}</a>
+                          <p  className='url1 text-center mt-0 px-2 py-1 me-2 d-inline-block'>{e}</p>
                         )
-                      }):''}
-                    </div>
-                  </div>
-                  <div className='text-end mt-3 mt-md-0'>
-                  <a href={e.url} target='_blank' className='url text-center text-silver mt-0 px-lg-3 px-3 py-1'>Visit Site</a>
+                        }):''}
+                        </div>
+                        <div className="col-lg-3 col-md-6 text-end">
+                        <a href={e.url} target='_blank' className='url text-center text-silver mt-0 px-lg-3 px-3 py-1'>Visit Site</a>
+                        </div>
+                      </div>
                   </div>
               </div>
             </motion.div>

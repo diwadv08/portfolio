@@ -21,7 +21,7 @@ function EditEducation() {
    
 
       
-    
+      const [subBtn,seytSubBtn]=useState('Update Education');
       const [data,setData]=useState(defaultData)
       useEffect(()=>{
         fetch(`${url}/education/${_id}`)
@@ -40,6 +40,7 @@ function EditEducation() {
       
       const SubmitFun=async(e)=>{
         e.preventDefault();
+        seytSubBtn('Updating...')
         const form = new FormData();
     
         form.append('id',data._id);
@@ -89,7 +90,9 @@ function EditEducation() {
                                 </div>
                             </div>
                             <div className="col-12 mt-4 mb-0">
-                                <input type="submit" className='btn btn-success form-control'/>
+                                <button type="submit" className='btn btn-success form-control'>
+                                {subBtn}
+                            </button>
                             </div>
                         </div>
                     </form>

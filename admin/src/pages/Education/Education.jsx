@@ -19,12 +19,15 @@ function Education() {
     let num=1;
 
    let deleteFn=async(id)=>{
-      let deleteeducation=await fetch(`${url}/education_delete/${id}`,{
-        method:'DELETE'
-      })
-      const res=await deleteeducation.json();
-      if(res){
-        window.location.reload();
+      let con=confirm('Are You sure want to delete this')
+      if(con){
+        let deleteeducation=await fetch(`${url}/education_delete/${id}`,{
+          method:'DELETE'
+        })
+        const res=await deleteeducation.json();
+        if(res){
+          window.location.reload();
+        }
       }
    }
 

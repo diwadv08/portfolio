@@ -20,10 +20,12 @@ function AddEducation() {
         ))
         
       }
+      const [subBtn,seytSubBtn]=useState('Add Education');
      
       
       const SubmitFun=async(e)=>{
         e.preventDefault();
+        seytSubBtn('Uploading...')
         const form = new FormData();
     
         form.append('grade',data.grade);
@@ -71,7 +73,9 @@ function AddEducation() {
                                 </div>
                             </div>
                             <div className="col-12 mt-4 mb-0">
-                                <input type="submit" className='btn btn-success form-control'/>
+                                <button type="submit" className='btn btn-success form-control'>
+                                {subBtn}
+                            </button>
                             </div>
                         </div>
                     </form>

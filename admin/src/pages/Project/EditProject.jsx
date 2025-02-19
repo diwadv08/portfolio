@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 import url from '../../url/nodeFile';
 import { nav_links } from '../../common/mylinks';
+import { cloud_url } from '../../url/cloudUrl';
 function EditProject() {
   let _id=useParams();
    _id=_id.id;
@@ -20,7 +21,8 @@ function EditProject() {
 
   const [data,setData]=useState(defaultData)
 
-  const [image,setImage]=useState(false)
+  const [image,setImage]=useState(false);
+  const [subBtn,seytSubBtn]=useState('Update Project');
   const changeBox=(e)=>{    
     setData((prev)=>(
         {...prev,[e.target.name]:e.target.value}
@@ -40,11 +42,27 @@ function EditProject() {
   
   const SubmitFun=async(e)=>{
     e.preventDefault();
+    seytSubBtn('Updating...')
     const form = new FormData();
+    if(image){
+        const cloud_upload = new FormData();
+        cloud_upload.append('file', image);
+        cloud_upload.append('upload_preset','portfolio' );
+        try {
+        const response = await axios.post(cloud_url, cloud_upload, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+        });
+        
+        form.append('image', response.data.url);
 
+        } catch (error) {
+            console.error('Error uploading image and data:', error);
+        }
+    }
     form.append('category',data.category);
     form.append('url',data.url);
-    form.append('image',image);    
     form.append('id',data._id);    
     const response = await axios.post(url+'/project_edit', form, {
     headers: {
@@ -82,20 +100,22 @@ function EditProject() {
                                 </div>
                                 <div className="col-12 mb-3">
                                     <label htmlFor="">Tools used</label>
-                                    <input type="text" name='category' value={data.category}  onChange={changeBox} placeholder='Ex:- HTML---CSS---Bootstrap'  className='form-control'/>
+                                    <input type="text" name='category' value={data.category}  onChange={changeBox} placeholder='Ex:- HTML,CSS,Bootstrap'  className='form-control'/>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-12 text-center">
                             <label htmlFor="image-upload">
                                 
-                                <img src={image?URL.createObjectURL(image):(url+'/images/'+data.image)} style={{width:'100%',background:'white',height:'290px'}} alt="" />
+                                <img src={image?URL.createObjectURL(image):(data.image)} style={{width:'100%',background:'white',height:'290px'}} alt="" />
                             </label>
                             <input type="file" onChange={changeImage}  className='form-control' accept="image/*" id='image-upload' name='image' hidden/>
                         </div>
                         
                         <div className="col-12 mt-5 mb-0">
-                            <input type="submit" className='btn btn-success form-control'/>
+                            <button type="submit" className='btn btn-success form-control'>
+                                {subBtn}
+                            </button>
                         </div>
                     </div>
                 </form>

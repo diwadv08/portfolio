@@ -13,12 +13,13 @@ function Skill() {
       .then((datas)=>{
         setskillsData(datas)
       })  
-      console.log(url+"/skills");
       
     },[])
     let num=1;
 
    let deleteFn=async(id)=>{
+    let con=confirm('Are You sure want to delete this')
+      if(con){
       let deleteskills=await fetch(`${url}/skills_delete/${id}`,{
         method:'DELETE'
       })
@@ -26,6 +27,7 @@ function Skill() {
       if(res){
         window.location.reload();
       }
+    }
    }
 
   return (
@@ -38,11 +40,12 @@ function Skill() {
         </div>
         <div className="col-12">
             <div className="table-responsive">
-                <table className='table text-dark table-bordered'>
-                   <thead className='bg-dark text-light'>
+                <table className='table text-dark table-bordered text-center'>
+                   <thead className='bg-dark'>
                        <tr>
                             <th>S.No</th>
                             <th>Language</th>
+                            <th>Image</th>
                             <th>Level</th>
                             <th>Color</th>
                             <th>Action</th>
@@ -50,13 +53,16 @@ function Skill() {
                    </thead>
                         {(skillsData)?skillsData.map((e,i)=>{
                             return (
-                            <tbody  key={i}>
+                            <tbody key={i} className='bg-light'>
                                 <tr>
                                     <td>{num++}</td>
                                     <td>{e.language}</td>
+                                    <td><img src={e.image} style={{height:'70px',width:'80px'}} alt=""  className='bg-dark p-2'/></td>
                                     <td>{e.level}</td>
                                     <td>
-                                        <p style={{height:'40px',width:'130px',background:e.color}}></p>
+                                       <center>
+                                       <p className='border border-2 border-dark' style={{height:'40px',width:'40px',background:e.color}}></p>
+                                       </center>
                                     </td>
                                     <td>
                                         <Link to={nav_links[2].edit+"/"+e._id}><i className='fa fa-edit text-success me-2'></i></Link>

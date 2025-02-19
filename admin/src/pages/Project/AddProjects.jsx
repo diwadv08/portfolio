@@ -6,6 +6,7 @@ import url from '../../url/nodeFile';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { nav_links } from '../../common/mylinks';
+import { cloud_url } from '../../url/cloudUrl';
 function AddProjects() {
 
 
@@ -16,7 +17,7 @@ function AddProjects() {
     image:'',
   }
   const [data,setData]=useState(defaultData)
-
+  const [subBtn,seytSubBtn]=useState('Add Project');
   const [image,setImage]=useState(false)
   const changeBox=(e)=>{    
     setData((prev)=>(
@@ -26,16 +27,33 @@ function AddProjects() {
   }
   const SubmitFun=async(e)=>{
     e.preventDefault();
+    seytSubBtn('Uploading...')
+    const cloud_upload = new FormData();
     const form = new FormData();
-
+    cloud_upload.append('file', image);  // Ensure 'image' field is correctly named
+    cloud_upload.append('upload_preset','portfolio' );  // Ensure 'image' field is correctly named
+    try {
+        const response = await axios.post(cloud_url, cloud_upload, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    });
+        form.append('image', response.data.url);
+        console.log(response.data.url);
+        
+    } 
+    catch (error) {
+        console.error('Error uploading image and data:', error);
+    }
     form.append('category',data.category);
     form.append('url',data.url);
-    form.append('image',image);    
+        
     const response = await axios.post(url+'/project_add', form, {
     headers: {
         'Content-Type': 'multipart/form-data',
     },
     });
+    
     nav(nav_links[1].url)
   }
 
@@ -60,7 +78,7 @@ function AddProjects() {
                                 </div>
                                 <div className="col-12 mb-3">
                                     <label htmlFor="">Tools used</label>
-                                    <input type="text" name='category' value={data.category}  onChange={changeBox} placeholder='Ex:- HTML---CSS---Bootstrap'  className='form-control'/>
+                                    <input type="text" name='category' value={data.category}  onChange={changeBox} placeholder='Ex:- HTML,CSS,Bootstrap'  className='form-control'/>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +90,9 @@ function AddProjects() {
                         </div>
                         
                         <div className="col-12 mt-5 mb-0">
-                            <input type="submit" className='btn btn-success form-control'/>
+                            <button type="submit" className='btn btn-success form-control'>
+                                {subBtn}
+                            </button>
                         </div>
                     </div>
                 </form>

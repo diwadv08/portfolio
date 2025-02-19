@@ -2,12 +2,23 @@
     *{
         color:var(--bs-secondary);
     }
-
+    .home-section-padding{
+        position: relative !important;;
+    }
     body{
         background:var(--bs-dark);
     }
     .navbar-nav a{
         margin-left:30px;
+    }
+    .goToTop{
+        bottom:5%;
+        right:2%;
+        padding:10px;
+        font-weight:1000;
+        font-size:20px;
+        box-shadow:0px 0px 5px #00ad56;
+        z-index:1;
     }
     a{
         text-decoration:none;
@@ -28,28 +39,57 @@
         position: relative;
         top:0;
         transition:.5s;
-        background:var(--bs-black3);
-        box-shadow:0px 0px 3px var(--bs-dark);
+        background:var(--bs-black2);
+        border-radius:50px;
+    }
+    .bg-social2{
+        position: relative;
+        top:0;
+        transition:.5s;
+        background:var(--bs-black2);
+         border-radius:50px;
+    }
+    .bg-social2 i{
+        color:var(--bs-success);
+    }
+    .bg-social2:hover{
+        background:var(--bs-black2);
+        
+    }
+    .bg-social2:hover i,.bg-social2:hover h6{
+        color:var(--bs-light);
     }
     .bg-social:hover{
-        background:var(--bs-dark);
-        }
-
-    .bg-social i,.bg-social h6{
+        transition:.1s;
+        box-shadow:none;
+        background:var(--bs-black);
+        box-shadow:0px 0px 1.2px var(--bs-light);
+    }
+    .bg-social:hover i{
+        color:var(--bs-success);
+    }
+    .bg-social i{
         color:var(--bs-light);
+    }
+    .bg-social i,.bg-social h6{
         transition:.5s;
         position: relative;
         z-index:1;
     }
+    .bg-social h6{
+        color:var(--bs-light);    
+    }
     .myimage{
         border-radius:100%;
         width:100%;
+        height:100%;
         animation:2s imgAnim infinite alternate;
     }
     .myimage img{
-        width:75%;
-        border-radius:10% 30%;
-        filter:brightness(0.6) saturate(0.7) contrast(1.23);
+        width:80%;
+        border-radius:15% 45%;
+        border:10px solid #766f6f97;
+        filter:brightness(0.9) saturate(0.6) contrast(1.2);
         transition:.3s;
     }
     @keyframes imgAnim {
@@ -60,13 +100,10 @@
             transform:translateY(-2%);
         }
     }
-    .bg-social:hover i{
-        color: var(--bs-success) !important;
-    }
+    
 
     ::-webkit-scrollbar {
-        width:8px; 
-        height:10px; 
+        width:6px; 
     }
     
 
@@ -77,8 +114,8 @@
     }
     
     ::-webkit-scrollbar-thumb {
-        background-color:var(--bs-silver); 
-        border-radius: 10px; 
+        background-color:var(--bs-secondary); 
+        border-radius:50px; 
     }
    
 
@@ -123,12 +160,12 @@
     }
     .myNavbar{
         box-shadow:0px 0px 5px var(--bs-black2);
-        border-bottom:1px solid #2f2e2e;
+        border-bottom:1px solid var(--bs-black3);
     }
     .myBoxxes .card{
         transition:.5s;
         background: var(--bs-dark) !important;
-        border:1px solid #3a3a3a;
+        border:1px solid var(--bs-black3);
         height:190px;
         overflow:hidden;
         position: relative;
@@ -141,7 +178,6 @@
     }
     
     .myBoxxes .card:hover .myDivContent{
-        background: var(--bs-dark) !important;
         top:-190px;
         transition:1s;
     }
@@ -174,7 +210,7 @@
         cursor:pointer;
         background:var(--bs-black2);
         transition:.8s;
-        margin:10px 0px;
+        margin:5px 0px;
     }
     
     
@@ -194,8 +230,6 @@
     .myBoxxes12 .url1{
         font-size:12px;
         font-weight:700;
-        position: relative;
-        z-index:11;
         color:grey;
         border-radius: 3px;
         border:1px solid;
@@ -209,8 +243,7 @@
         width:100%;
     }
     .myBoxxes12 .url{
-        position: relative;
-        z-index:11;
+        
         border-radius:60px;
         color:var(--bs-success);
         border:1px solid;
@@ -224,7 +257,7 @@
     }
     .myBoxxes12 .url:hover{
         background: green;
-        color: white ;;
+        color: white ;
         border-color:var(--bs-success);
     }
     
@@ -240,7 +273,7 @@
       }
   
     .experience{
-        background:var(--bs-black3);
+        background:var(--bs-dark);
     }
     .experience .grade{
         font-style:italic;
@@ -262,7 +295,8 @@
         font-size:13px;
         text-transform:uppercase;
         font-weight:700;
-        letter-spacing:5px;
+        letter-spacing:3px;
+        color:var(--bs-success);
         margin-bottom:10px;
     }
     .myAbout .role{
@@ -284,20 +318,21 @@
         .modal-dialog{
             transform: scale(1.4) !important;;
         }
+        
         .myBoxxes12 img{
             height:260px;
         }
-        .myAbout .name span{
-            color: transparent !important;
-            background:linear-gradient(to left,#e1e1e1,#5b5b5b);
-            background-clip:text;
+        .myAbout .name span:nth-child(1){
+            color: var(--bs-light);
         }
         .myimage img{
             border-radius:100%;
+            border:none;
         }
         
         .home-section-padding{
             padding:130px 15px 50px;
+            position: relative;
         }
         .navbar-nav a{
             font-family:var(--regular);
@@ -318,20 +353,17 @@
             bottom:-3px;
             right:10px;
             border-radius:40px;
-            height:3px;
+            height:4.4px;
             position: absolute;
             transition:.5s ease;
         }
-        .navbar-nav a:hover::after{
-            width:35px;
+        .navbar-nav a:hover::after,.navbar-nav .active::after{
+            width:20%;
         }
         .navbar-nav a:hover,.navbar-nav .active,.navbar-nav a:active,.navbar-nav a:focus{
             transition:.5s ease;
             opacity:1;
             color:var(--bs-light)!important;
-        }
-        .navbar-nav .active::after{
-            width:35px;
         }
         .navbar-brand a{
             cursor:pointer;

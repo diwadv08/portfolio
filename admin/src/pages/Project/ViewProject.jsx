@@ -20,6 +20,8 @@ function ViewProject() {
     let num=1;
 
    let deleteFn=async(id)=>{
+    let con=confirm('Are You sure want to delete this')
+      if(con){
       let deleteProject=await fetch(`${url}/project_delete/${id}`,{
         method:'DELETE'
       })
@@ -27,6 +29,7 @@ function ViewProject() {
       if(res){
         window.location.reload();
       }
+    }
    }
 
   return (
@@ -56,7 +59,7 @@ function ViewProject() {
                                     <td>{num++}</td>
                                     <td>
                                       <center>
-                                        <img src={url+'/images/'+e.image} height={"60px"} alt="" />
+                                        <img src={e.image} height={"60px"} alt="" />
                                       </center>
                                     </td>
                                     <td>{e.category}</td>

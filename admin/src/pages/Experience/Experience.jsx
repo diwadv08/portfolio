@@ -20,12 +20,15 @@ function Experience() {
     let num=1;
 
    let deleteFn=async(id)=>{
-      let deleteexperience=await fetch(`${url}/experience_delete/${id}`,{
-        method:'DELETE'
-      })
-      const res=await deleteexperience.json();
-      if(res){
-        window.location.reload();
+    let con=confirm('Are You sure want to delete this')
+      if(con){
+        let deleteexperience=await fetch(`${url}/experience_delete/${id}`,{
+          method:'DELETE'
+        })
+        const res=await deleteexperience.json();
+        if(res){
+          window.location.reload();
+        }
       }
    }
 

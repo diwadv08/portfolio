@@ -23,6 +23,7 @@ function EditExperience() {
    
 
       
+      const [subBtn,seytSubBtn]=useState('Edit Experience');
     
       const [data,setData]=useState(defaultData)
       useEffect(()=>{
@@ -44,7 +45,7 @@ function EditExperience() {
       const SubmitFun=async(e)=>{
         e.preventDefault();
         const form = new FormData();
-    
+        seytSubBtn('Uploading...')
         form.append('id',data._id);
         form.append('company_name',data.company_name);
         form.append('from',data.from);
@@ -103,7 +104,9 @@ function EditExperience() {
                                 </div>
                             </div>
                             <div className="col-12 mt-4 mb-0">
-                                <input type="submit" className='btn btn-success form-control'/>
+                            <button type="submit" className='btn btn-success form-control'>
+                                {subBtn}
+                            </button>
                             </div>
                         </div>
                     </form>

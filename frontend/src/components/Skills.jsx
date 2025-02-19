@@ -13,7 +13,7 @@ function Skills() {
   // border Radius
   let myCircle='15px';
   // Letter limits
-  let letterLimits=200;
+  let letterLimits=270;
   useEffect(()=>{
     fetch(`${url}/skills`)
     .then((data)=>(data.json()))
@@ -37,7 +37,7 @@ function Skills() {
   return (
     <Container fluid id={myLinks[1].toLowerCase()}>
     <div className="row section-padding">
-      <h1>My <span>Skills</span></h1>
+      <h1>Tech<span> Stack</span></h1>
       <Swiper
       breakpoints={{
         320: { slidesPerView: 1 }, // 1 slide on small screens (default)
@@ -47,13 +47,13 @@ function Skills() {
         1024: { slidesPerView: 3}, // 3 slides on large screens
       }}
       ref={swiperRef}
-      speed={1900}
+      speed={1000}
       direction="horizontal"
       modules={[Pagination, Scrollbar, A11y,Autoplay ]}
       spaceBetween={30}
       loop={true}  // Infinite loop
       autoplay={{
-        delay:0, 
+        delay:1000, 
       }}
       
     >
@@ -74,13 +74,13 @@ function Skills() {
                     }
                   </div>
                   <div className="col-12 d-flex flex-column align-items-center justify-content-center">
-                    <img src={url+'/images/'+e.image} style={{height:'70px'}}/>
+                    <img src={e.image} style={{height:'70px'}}/>
                     <div className="d-flex align-items-center mt-3">
                       <span style={{background:e.color,width:box,height:box,marginRight:'5px',borderRadius:box}}></span><span style={{color:'white',fontWeight:'400'}}>{e.language}</span>
                     </div>
                   </div>
-                  <div className="col-12 mt-5">
-                    <p>{(e.description.length>letterLimits)?e.description.substr(0,letterLimits)+'....':e.description}</p>
+                  <div className="col-12 mt-5 text-center">
+                    <p>{(e.description.length>letterLimits)?e.description.substr(0,letterLimits)+'':e.description}</p>
                   </div>
                 </div>
               </div>
