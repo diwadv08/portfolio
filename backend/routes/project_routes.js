@@ -31,11 +31,35 @@ router.post('/project_edit',multer_upload.single('image'),async(req,res)=>{
 
 
 router.delete('/project_delete/:id',async(req,res)=>{
-    const deleteProject =await Project_model.findByIdAndDelete({_id:req.params.id});
-    if (!deleteProject) {
-        return res.status(404).json({ message: 'Unable to delete' });
-    }
-    res.status(200).json({ message: 'Deleted successfully', user: deleteProject });
+    try {
+        // Find the project entry
+        const project = await Project_model.findById(req.params.id);
+        if (!project) {
+          return res.status(404).json({ message: 'project not found' });
+        }
+    
+        // Extract the public ID from the image URL (if image exists)
+        if (project.image) {
+          const publicId = project.image.split('/').pop().split('.')[0]; // Extract public_id from URL
+          
+          // Delete from Cloudinary
+          await cloudinary.uploader.destroy(publicId, (error, result) => {
+            if (error) {
+              console.error('Cloudinary Deletion Error:', error);
+            } else {
+              console.log('Cloudinary Deletion Success:', result);
+            }
+          });
+        }
+    
+        // Delete from MongoDB
+        await Project_model.findByIdAndDelete(req.params.id);
+        
+        res.status(200).json({ message: 'project and image deleted successfully' });
+      } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ message: 'Server error' });
+      }
 })
 
 module.exports=router;
