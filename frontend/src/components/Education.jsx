@@ -21,7 +21,7 @@ function Education() {
     <Container fluid id={myLinks[4].toLowerCase()}>
        <div className='row section-padding'>
           <div className="col-12">
-              <h1>My <span>Education</span></h1>
+              <h1>Education</h1>
           </div>
           <motion.div initial="hidden"// Starting state: hidden and slightly below
             variants={flip(1)} // Final state: fully visible and in place
@@ -31,7 +31,7 @@ function Education() {
                 return (
                   <div className="col-lg-6 col-md-6" key={index}>
                     <div className="row p-3 education">
-                      <div className="col-md-12 mt-md-0 p-3" style={{boxShadow:'0px 0px 1px silver'}}>
+                      <div className="col-md-12 mt-md-0 p-3" style={{background:'var(--bs-black2)',boxShadow:'0px 0px 1px silver'}}>
                         <h2 style={{fontWeight:'200'}} className='mb-4 mb-md-0'>{e.grade} <span className='text-success d-md-block d-inline py-md-2'>{e.mark}</span></h2>
                         <h6>{e.college} on <span className='text-success'>{e.year}</span></h6>
                       </div>

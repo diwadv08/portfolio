@@ -51,16 +51,16 @@ function About() {
                  <motion.div initial="hidden"// Starting state: hidden and slightly below
                              variants={zoomIn(1)} // Final state: fully visible and in place
                              whileInView={"show"}
-                             viewport={{once:false,amount:0.3}} className="col-md-6 h-100 text-md-center text-center align-self-center" >
+                             viewport={{once:false,amount:0.3}} className="col-md-5 text-md-center text-center align-self-center" >
                   <div className="myimage">
                       <img src={e.image} className='text-end' alt=""  />
                   </div>
                 </motion.div>
-                <div className="col-md-6 pt-3 px-4 px-md-0 align-self-center myAbout text-md-start text-center position-relative">
+                <div className="col-md-7 pt-3 px-4 px-md-0 align-self-center myAbout text-md-start text-center position-relative">
                               
                             <h4 className='name mt-4 mt-lg-0 text-center pe-lg-5'>{e.name?e.name.toUpperCase():''}</h4>
                             <p className='text-secondary text-center pe-lg-5'><i>{e.description?e.description:''}</i></p>
-                            <h1 className='role'>MERN <span className='d-md-inline d-block text-success'>Stack Developer</span></h1>
+                            <h1 className='role text-center pe-lg-5'>MERN <span className='d-md-inline d-block text-success'>Stack Developer</span></h1>
                             <div className="row me-lg-5 mt-4">
                               {usernames.map((e,index)=>{
                                 return (

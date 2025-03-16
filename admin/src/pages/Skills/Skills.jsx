@@ -57,7 +57,7 @@ function Skill() {
                                 <tr>
                                     <td>{num++}</td>
                                     <td>{e.language}</td>
-                                    <td><img src={e.image} style={{height:'70px',width:'80px'}} alt=""  className='bg-dark p-2'/></td>
+                                    <td><img src={e.image} style={{height:'70px',width:'80px'}} alt=""  className='bg-secondary p-2'/></td>
                                     <td>{e.level}</td>
                                     <td>
                                        <center>
