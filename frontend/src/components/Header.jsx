@@ -17,7 +17,7 @@ function Header() {
           <Nav className="ms-auto">
             {myLinks.map((e)=>{
                 return <div key={e}>
-                    <Link className={(isActive===e)?'active nav-link':'nav-link'} to={e.toLowerCase()} offset={-35} duration={scrollSpeed} spy={true} smooth>{e}</Link>
+                    <Link className={(isActive===e)?'active nav-link':'nav-link'} to={e.toLowerCase()} offset={-70} duration={scrollSpeed} spy={true} smooth>{e}</Link>
                 </div>
             })}
            

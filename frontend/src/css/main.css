@@ -10,16 +10,16 @@
         background:var(--bs-dark);
     }
    
-    .myNavbar::before{
+    
+    .footer::before{
         content:'';
         position:absolute;
         height:1px;
-        width: 110% !important;
-        z-index: 10000 !important;
-        top:0;
-        background:linear-gradient(to right,#0dbc2a,#e2e60b,#0a9b2e);
+        left:0;
+        width:100% !important;
+        z-index:10000 !important;
+        background:var(--bs-success);
     }
-
     .navbar-nav a{
         margin-left:30px;
     }
@@ -48,7 +48,9 @@
         font-family:var(--cursive);
         color:var(--bs-success);
     }
-    
+    .text-cursive{
+        font-family:var(--cursive)!important;
+    }
     .bg-social{
         position: relative;
         top:0;
@@ -100,9 +102,9 @@
     .myimage img{
         filter:brightness(0.9);
         width:30%;
-        border-radius:0 65% 65%;
-        border:4px solid var(--bs-success);
-        box-shadow:10px 20px 500px var(--bs-success),-10px -20px 6500px red;
+        padding:5px;
+        border-radius:10px 65% 65%;
+        border:10px solid #e8dede36;
         transition:.3s;
     }
     @keyframes imgAnim {
@@ -172,8 +174,8 @@
         position:relative;
     }
     .myNavbar{
-        box-shadow:0px 0px 2px rgb(44, 43, 43);
-        border-bottom:3px solid var(--bs-black3);
+        box-shadow:0px 0px 2px #363636;
+        border-bottom:1px solid var(--bs-success);
     }
     .myBoxxes .card{
         transition:.5s;
@@ -293,7 +295,8 @@
         font-weight:700;
     }
     .experience .role{
-        font-weight:100!important;
+        font-family:var(--cursive);
+        font-weight:700!important;
     }
     .experience .year{
         font-weight:700!important;
@@ -362,6 +365,7 @@
 
             color: var(--bs-light) !important;
             margin-left:10px;
+            font-style:italic;
             border-radius:40px;
             padding:4px 20px!important;
             position: relative;
@@ -371,18 +375,26 @@
         }
         .navbar-nav a::after{
             content:'';
-            background:var(--bs-success)!important;
-            width:0;
-            left:20px;
-            bottom:-3px;
-            right:10px;
+            height:0;
             border-radius:40px;
-            height:4.4px;
             position: absolute;
             transition:.5s ease;
+            width:0;
+            z-index:-999;
+            top:28%;
+            left:0;
+            height:14px;            
+            width:15px;
+            transform:scale(0);
         }
-        .navbar-nav a:hover::after,.navbar-nav .active::after{
-            width:20%;
+        .navbar-nav a:hover::after{
+            transform:scale(1);
+            opacity:0.5;
+            background:var(--bs-secondary)!important;
+        }
+        .navbar-nav .active::after{
+            transform:scale(1);
+            background:var(--bs-success)!important;
         }
         .navbar-nav a:hover,.navbar-nav .active,.navbar-nav a:active,.navbar-nav a:focus{
             transition:.5s ease;
@@ -407,18 +419,16 @@
             font-weight:300;
         }
         .section-padding h1>span,.home-section-padding h1>span{
-            
             font-weight:600;
+            background:var(--bs-success);
+            background-clip:text;
+            color:transparent;
             margin-left:4px;
             border-radius:40px;
         }
             
         .myAbout .role{
-            font-family:var(--cursive);
             font-size:50px;
-            background:var(--bs-secondary);
-            background-clip:text;
-            color:transparent;
             margin-bottom:10px;
             font-weight:600;
         }

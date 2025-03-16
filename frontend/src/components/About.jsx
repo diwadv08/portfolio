@@ -60,7 +60,7 @@ function About() {
                               
                             <h4 className='name mt-4 mt-lg-0 text-center pe-lg-5'>{e.name?e.name.toUpperCase():''}</h4>
                             <p className='text-secondary text-center pe-lg-5'><i>{e.description?e.description:''}</i></p>
-                            <h1 className='role text-center pe-lg-5'>MERN <span className='d-md-inline d-block text-success'>Stack Developer</span></h1>
+                            <h1 className='role text-center pe-lg-5'>MERN <span className='d-md-inline d-block text-cursive'>Stack Developer</span></h1>
                             <div className="row me-lg-5 mt-4">
                               {usernames.map((e,index)=>{
                                 return (
