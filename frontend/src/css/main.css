@@ -326,6 +326,7 @@
     }
     .myAbout .role{
         font-weight:100;
+        font-family:var(--regular);
         color:var(--bs-success);
     }
     .myAbout p{
@@ -437,6 +438,10 @@
             font-size:50px;
             margin-bottom:10px;
             font-weight:600;
+        }
+        .myAbout span{
+            font-family:var(--cursive);
+            
         }
         .myAbout p{
             margin-bottom:10px;
