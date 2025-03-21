@@ -52,15 +52,15 @@ function About() {
                              variants={zoomIn(1)} // Final state: fully visible and in place
                              whileInView={"show"}
                              viewport={{once:false,amount:0.3}} className="col-md-5 text-md-center text-center align-self-center" >
-                  <div className="myimage">
+                  <div className="myimage mt-md-3">
                       <img src={e.image} className='text-end' alt=""  />
                   </div>
                 </motion.div>
                 <div className="col-md-7 pt-3 px-4 px-md-0 align-self-center myAbout text-md-start text-center position-relative">
                               
                             <h4 className='name mt-4 mt-lg-0 text-center pe-lg-5'>{e.name?e.name.toUpperCase():''}</h4>
-                            <p className='text-secondary text-center pe-lg-5'><i>{e.description?e.description:''}</i></p>
-                            <h1 className='role text-center pe-lg-5'>MERN <span className='d-md-inline d-block text-cursive'>Stack Developer</span></h1>
+                            <p className='text-secondary text-center pe-lg-5'>{e.description?e.description:''}</p>
+                            <h1 className='role text-center pe-lg-5 mt-lg-4'>MERN<span className='text-cursive ps-3'>Stack Developer</span></h1>
                             <div className="row me-lg-5 mt-4">
                               {usernames.map((e,index)=>{
                                 return (

@@ -25,7 +25,7 @@ function Header() {
         </Navbar.Collapse>
     </Navbar>
       <a href="#">
-          <i className='fa fa-chevron-up bg-success goToTop position-fixed rounded-pill'></i>
+          <i className='fa fa-chevron-up goToTop position-fixed'></i>
       </a>
     </Container>
 

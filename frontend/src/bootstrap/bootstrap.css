@@ -2,20 +2,20 @@
 :root{
     
     --bs-info:#9d9a00;
-    --bs-secondary:#cccccc;
-    --bs-silver:#4542427e;
-    --bs-grey:#ffffff;
-    --bs-danger:#fe8b5a;
+    --bs-grey:#ed9292;
+    --bs-danger:#802a05;
     --bs-primary:#0099ff;
-    --bs-warning:#ffc456;
-    --bs-success:#3cc413;
-    --bs-light:white;
-    --bs-dark:#0e0d0d;
-    --bs-black2:#1d1d1df3;
+    --bs-warning:#72ff56;
+    --bs-success:#44d7a6;
+    --bs-light:#cfcccc;
+    --bs-dark:#121010;
+    --bs-black2:#212020;
     --bs-black3:#202020;
     --bs-gold:#b8b500;
-    --cursive:"Ms Madi";
-    --regular:"Poppins";
+    --cursive:"berta_drug";
+    --regular:"Righteous";
+    --regular_main:"Poppins";
+    --cursive2:"bastian script";
     --bs-font-sans-serif:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     --bs-font-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     --bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))

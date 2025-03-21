@@ -46,7 +46,7 @@ function Projects() {
             initial="hidden"// Starting state: hidden and slightly below
             variants={zoomIn(1)} // Final state: fully visible and in place
             whileInView={"show"}
-            viewport={{amount:0.3,once:true}} className="col-lg-6 myBoxxes12 my-1">
+            viewport={{amount:0.3,once:true}} className="col-lg-6 myBoxxes12 my-2">
                 <div className="row px-1 pt-3">
                   <div className="col-12">
                   <a href={e.url} target='_blank'>

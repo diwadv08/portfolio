@@ -1,6 +1,6 @@
 
     *{
-        color:var(--bs-secondary);
+        color:var(--bs-light);
         font-family:var(--regular);
     }
     .home-section-padding{
@@ -8,9 +8,7 @@
     }
     body{
         background:var(--bs-dark);
-    }
-   
-    
+    } 
     .footer::before{
         content:'';
         position:absolute;
@@ -29,8 +27,12 @@
         padding:10px;
         font-weight:1000;
         font-size:20px;
-        box-shadow:0px 0px 5px var(--bs-success);
+        border:2px solid var(--bs-light);
+        border-radius:10px;
         z-index:1;
+    }
+    p{
+        font-family:var(--regular_main);
     }
     a{
         text-decoration:none;
@@ -43,9 +45,8 @@
     .navbar-brand a{
         cursor:pointer;
         opacity:.8;
-        font-weight:900;
+        font-weight:100;
         text-shadow:0px 1px 0px var(--bs-success);
-        font-family:var(--cursive);
         color:var(--bs-success);
     }
     .text-cursive{
@@ -63,8 +64,9 @@
         top:0;
         transition:.5s;
         background:var(--bs-black2);
-         border-radius:50px;
+        border-radius:50px;
     }
+    
     .bg-social2 i{
         color:var(--bs-success);
     }
@@ -129,7 +131,7 @@
     }
     
     ::-webkit-scrollbar-thumb {
-        background-color:var(--bs-secondary); 
+        background-color:var(--bs-light); 
         border-radius:50px; 
     }
    
@@ -142,6 +144,9 @@
         padding:20px 0px 10px;
         text-align:center;
         font-weight:100;
+        font-family:var(--cursive2);
+
+        text-transform:uppercase;
     }
     .section-padding h1>span{
         color:var(--bs-success);
@@ -163,7 +168,7 @@
         color:var(--bs-primary);
     }
     .socialmedia-linkss .icon4{
-        color:var(--bs-secondary);
+        color:var(--bs-light);
     }
     .socialmedia-linkss i:hover{
         top:-3px;
@@ -198,7 +203,7 @@
     }
 
     .myBoxxes .card .badge{
-        color:#e3e3e3;
+        color:var(--bs-dark);
         padding:4px 20px;
         border-radius:0;
         font-weight:600;
@@ -209,9 +214,8 @@
         transform:rotate(0) scale(1);
     }
     .myBoxxes .card:hover .badge{
-        color:white;
+        color:var(--bs-light);
         border-radius:40px;
-       
     }
     .myBoxxes1 .card,.myBoxxes .card{
         cursor:pointer;
@@ -236,12 +240,9 @@
     .swiper-slide-visible{
         transform: scale(1) !important;
     }
-   
     .swiper-slide-visible img,.myBoxxes12:hover img{
         filter:brightness(1);
     }
-  
-    
     .myBoxxes12 .url1{
         font-size:12px;
         font-weight:700;
@@ -258,24 +259,17 @@
         width:100%;
     }
     .myBoxxes12 .url{
-        
         border-radius:60px;
         color:var(--bs-success);
+        text-transform:uppercase;
         border:1px solid;
-        font-weight:600;
-        border-color:var(--bs-success);
+        font-weight:100;
     }  
     .myBoxxes12:hover .url{
-        color: silver;
+        color:var(--bs-dark);
         background:var(--bs-success);
         border-color:var(--bs-success);
     }
-    .myBoxxes12 .url:hover{
-        background: var(--bs-success);
-        color: white ;
-        border-color:var(--bs-success);
-    }
-    
     .myBoxxes12 .url::after {
         content: '';
         position: absolute;
@@ -285,40 +279,53 @@
         height: 3px;
         background-color: #333;
         transition: all 0.3s ease;
-      }
-  
+    }
     .experience{
         background:var(--bs-dark);
     }
     .experience .grade{
-        font-style:italic;
-        font-weight:700;
+        font-weight:100;
+        font-size:15px!important;
+        text-transform:uppercase;
     }
     .experience .role{
-        font-family:var(--cursive);
-        font-weight:700!important;
+        font-family:var(--cursive2);
+        font-weight:100!important;
+        font-size:40px;
     }
     .experience .year{
-        font-weight:700!important;
-        font-style:italic;
+        font-size:15px!important;
+        font-weight:100!important;
+        text-transform:uppercase;
     }
     .experience .myBtn{
         font-weight:100!important;
         border-radius:30px;
     }
-    
+    .education .grades{
+        font-family:var(--cursive2);
+    }
+    .education .marks{
+        font-size:24px;
+        font-family:var(--cursive);
+    }
     .myAbout .name{
-        font-size:12px;
+        font-size:15px;
         text-transform:capitalize;
+        letter-spacing:3px;
+        font-family:var(--regular);
         font-weight:700;
         color:var(--bs-success);
         margin-bottom:10px;
     }
     .myAbout .role{
         font-weight:100;
+        color:var(--bs-success);
+        font-family:var(--cursive);
     }
     .myAbout p{
-        font-style:italic;
+        font-size:40px !important;;
+        font-family:var(--cursive2);
     }
     .modal-content{
         background:transparent;
@@ -333,7 +340,6 @@
         .modal-dialog{
             transform: scale(1.4) !important;;
         }
-        
         .myBoxxes12 img{
             height:260px;
         }
@@ -345,7 +351,6 @@
             border-radius:100%;
             border:none;
             box-shadow:none;
-            filter:grayscale() contrast(1.2) brightness(0.7);
             animation:none!important;
         }
         @keyframes imgAnim11 {
@@ -358,14 +363,12 @@
             }
         }
         .home-section-padding{
-            padding:130px 15px 50px;
+            padding:150px 15px 90px;
             position: relative;
         }
         .navbar-nav a{
-
             color: var(--bs-light) !important;
             margin-left:10px;
-            font-style:italic;
             border-radius:40px;
             padding:4px 20px!important;
             position: relative;
@@ -390,7 +393,7 @@
         .navbar-nav a:hover::after{
             transform:scale(1);
             opacity:0.5;
-            background:var(--bs-secondary)!important;
+            background:var(--bs-light)!important;
         }
         .navbar-nav .active::after{
             transform:scale(1);
@@ -406,15 +409,12 @@
             font-size:32px;
             opacity:.8;
             font-weight:200;
-            
-
         }
         .section-padding{
             padding:50px;
         }
         
         .section-padding h1,.home-section-padding h1{
-
             font-size:25px;
             font-weight:300;
         }
@@ -428,13 +428,14 @@
         }
             
         .myAbout .role{
+            color:var(--bs-light);
             font-size:50px;
             margin-bottom:10px;
             font-weight:600;
+            font-family:var(--regular);
         }
         .myAbout p{
             margin-bottom:10px;
-            font-style:italic;
             font-size:18px;
         }
         .socialmedia-linkss{
