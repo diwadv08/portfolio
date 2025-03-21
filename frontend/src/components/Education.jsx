@@ -32,8 +32,8 @@ function Education() {
                   <div className="col-lg-6 col-md-6" key={index}>
                     <div className="row p-3 education">
                       <div className="col-md-12 mt-md-0 p-3" style={{background:'var(--bs-black2)',boxShadow:'0px 0px 1px silver'}}>
-                        <h2 className='mb-4 mb-md-0'><span className='marks d-md-block d-inline py-md-2'>{e.mark}</span><span className='text-success grades'>{e.grade}</span> </h2>
-                        <h6 className='mt-2'>{e.college} on <span className='text-success'>{e.year}</span></h6>
+                        <h2 className='mb-1 mb-md-0'><span className='marks d-block py-2'>{e.mark}</span><span className='text-success grades'>{e.grade}</span> </h2>
+                        <h6>{e.college} on <span className='text-success'>{e.year}</span></h6>
                       </div>
                     </div>
                     

@@ -43,6 +43,7 @@ function Projects() {
           
           return (
             <motion.div 
+            key={index}
             initial="hidden"// Starting state: hidden and slightly below
             variants={zoomIn(1)} // Final state: fully visible and in place
             whileInView={"show"}
@@ -56,9 +57,9 @@ function Projects() {
                   <div className="col-lg-12 my-3">
                       <div className="row">
                         <div className="col-lg-9">
-                        {catg.length>0?catg.map((e)=>{
+                        {catg.length>0?catg.map((e,index)=>{
                         return (
-                          <p  className='url1 text-center mt-0 px-2 py-1 me-2 d-inline-block'>{e}</p>
+                          <p key={index} className='url1 text-center mt-0 px-2 py-1 me-2 d-inline-block'>{e}</p>
                         )
                         }):''}
                         </div>

@@ -29,7 +29,7 @@ function Experience() {
               <div className="row text-center mx-md-0 mx-2 d-flex">
               {experienceData?experienceData.map((e,index)=>{
                 return (
-                  <div className="row">
+                  <div className="row" key={index}>
                     <div className="col-lg-3"></div>
                     <div className="col-lg-6 col-md-6 ps-md-5 ps-0" key={index}>
                     <div className="row p-1">

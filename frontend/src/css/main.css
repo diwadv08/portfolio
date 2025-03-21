@@ -155,6 +155,9 @@
     .home-section-padding{
         padding:100px 15px 50px;
     }
+    .socialmedia-linkss{
+        padding-top:10px;
+    }
     .socialmedia-linkss i{
         font-size:23px;
     }
@@ -302,12 +305,15 @@
         font-weight:100!important;
         border-radius:30px;
     }
+    .education{
+        text-align:start!important;
+    }
     .education .grades{
         font-family:var(--cursive2);
     }
     .education .marks{
         font-size:24px;
-        font-family:var(--cursive);
+        font-family:var(--regular);
     }
     .myAbout .name{
         font-size:15px;
@@ -321,7 +327,6 @@
     .myAbout .role{
         font-weight:100;
         color:var(--bs-success);
-        font-family:var(--cursive);
     }
     .myAbout p{
         font-size:40px !important;;
@@ -432,7 +437,6 @@
             font-size:50px;
             margin-bottom:10px;
             font-weight:600;
-            font-family:var(--regular);
         }
         .myAbout p{
             margin-bottom:10px;

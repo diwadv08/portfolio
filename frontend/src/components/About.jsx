@@ -60,16 +60,16 @@ function About() {
                               
                             <h4 className='name mt-4 mt-lg-0 text-center pe-lg-5'>{e.name?e.name.toUpperCase():''}</h4>
                             <p className='text-secondary text-center pe-lg-5'>{e.description?e.description:''}</p>
-                            <h1 className='role text-center pe-lg-5 mt-lg-4'>MERN<span className='text-cursive ps-3'>Stack Developer</span></h1>
+                            <h1 className='role text-center pe-lg-5'>MERN<span className='ps-3'>Stack Developer</span></h1>
                             <div className="row me-lg-5 mt-4">
                               {usernames.map((e,index)=>{
                                 return (
                                     <div className={"col-lg-"+cols[index]+" mb-3 col-12"} title={'Click Here'} key={index}>
-                                      <div className={"card "+bg[index]+" py-md-2 py-2"}>
+                                      <div className={"card "+bg[index]+" py-md-2 py-1"}>
                                         <a href={contact_links[index]} target='_blank'>
                                           <div className="d-flex justify-content-center align-items-center">
                                             <h1 style={{fontSize:'27px'}}><i className={icons[index]+' me-2'}></i></h1>
-                                            <h6>{usernames[index]}</h6>
+                                            <h6 className='mt-1'>{usernames[index]}</h6>
                                           </div>
                                         </a>
                                       </div>
