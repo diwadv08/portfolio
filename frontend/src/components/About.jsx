@@ -5,17 +5,20 @@ import { useState,useEffect } from 'react';
 import url from '../url/nodeFile';
 import { motion } from 'framer-motion';
 import { left, zoomIn } from '../animation/variant';
-import resume_pdf from "../pdf/diwakar_resume.pdf"
+import resume_pdf from "../pdf/resume.pdf"
+import Skeleton from 'react-loading-skeleton';
 function About() {
   let[about,setAbout]=useState();
   let myRole='Mern Stack Developer';
   const [displayedText, setDisplayedText] = useState('');
+  const [loading, setLoading] = useState(true);
   let speed=50;
   useEffect(()=>{
     fetch(`${url}/about`)
     .then((data)=>(data.json()))
     .then((datas)=>{
       setAbout(datas)
+      setLoading(false);
     })  
   },[])
 
@@ -46,7 +49,10 @@ function About() {
   return (
     <Container fluid id={myLinks[0].toLowerCase()}  className='home-section-padding bg-dark'>
           
-            {about ? about.map((e)=>
+            {loading
+            ?  
+            Array.from({ length: 5 }).map((_, index) => <Skeleton key={index} />)
+            :about ? about.map((e)=>
               (<div className="row d-md-flex flex-md-row flex-row-reverse flex-column" key={e}>
                  <motion.div initial="hidden"// Starting state: hidden and slightly below
                              variants={zoomIn(1)} // Final state: fully visible and in place
