@@ -9,24 +9,31 @@ const seedAdmin = require('./seed/seedAdmin');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Allowed origins for cross-site cookie based auth
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
 .split(',')
-.map((o) => o.trim())
+.map((o) => o.trim().replace(//$/, ''))
 .filter(Boolean);
 
-// Middlewares
 app.use(cors({
 origin: function (origin, callback) {
 if (!origin) return callback(null, true);
 
-if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+const normalizedOrigin = origin.trim().replace(/\/$/, '');
+
+if (allowedOrigins.length === 0 || allowedOrigins.includes(normalizedOrigin)) {
   return callback(null, true);
 }
+
+console.log('❌ CORS blocked for origin:', origin);
+console.log('✅ Allowed origins:', allowedOrigins);
+
 return callback(new Error(`CORS blocked for origin: ${origin}`));
+
 },
 credentials: true,
 }));
+
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
