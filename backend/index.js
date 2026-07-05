@@ -11,8 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
 .split(',')
-.map((o) => o.trim().replace(//$/, ''))
-.filter(Boolean);
+.map((o) => o.trim().replace(/\$/, '')).filter(Boolean);
 
 app.use(cors({
 origin: function (origin, callback) {
