@@ -9,33 +9,28 @@ const seedAdmin = require('./seed/seedAdmin');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Normalize allowed origins from env and remove trailing slash if present
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
-.split(',')
-.map((o) => o.trim().replace(/\/$/, ''))
-.filter(Boolean);
-
-console.log('ALLOWED_ORIGINS from env:', process.env.ALLOWED_ORIGINS);
-console.log('Normalized allowedOrigins:', allowedOrigins);
+  .split(',')
+  .map(o => o.trim().replace(/\/$/, ''));
 
 app.use(cors({
-origin: function (origin, callback) {
-// Allow requests without origin (Postman, curl, server-to-server)
-if (!origin) return callback(null, true);
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
 
-const normalizedOrigin = origin.trim().replace(/\/$/, '');
+    const normalizedOrigin = origin.trim().replace(/\/$/, '');
 
-if (allowedOrigins.length === 0 || allowedOrigins.includes(normalizedOrigin)) {
-  return callback(null, true);
-}
+    const isAllowed = allowedOrigins.some(o => o === normalizedOrigin);
 
-console.log('❌ CORS blocked for origin:', origin);
-console.log('✅ Allowed origins:', allowedOrigins);
+    if (isAllowed) {
+      return callback(null, true);
+    }
 
-return callback(new Error(`CORS blocked for origin: ${origin}`));
+    console.log("❌ Blocked origin:", normalizedOrigin);
+    console.log("✅ Allowed list:", allowedOrigins);
 
-},
-credentials: true,
+    return callback(null, false); // IMPORTANT: don't throw error
+  },
+  credentials: true,
 }));
 
 app.use(express.json());
