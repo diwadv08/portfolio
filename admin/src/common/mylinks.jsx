@@ -1,0 +1,39 @@
+
+export let nav_links =[
+    {
+        name:"Info",
+        url:'/about',
+        add:'/add_about',
+        edit:'/edit_about',
+        delete:'/delete_about',
+    },
+    {
+        name:"Projects",
+        url:'/projects',
+        add:'/add_projects',
+        edit:'/edit_projects',
+        delete:'/delete_projects',
+    },
+    {
+        name:"Skills",
+        url:'/skills',
+        add:'/add_skills',
+        edit:'/edit_skills',
+        delete:'/delete_skills',
+    },
+    {
+        name:"Education",
+        url:'/education',
+        add:'/add_education',
+        edit:'/edit_education',
+        delete:'/delete_education',
+    },
+    {
+        name:"Experience",
+        url:'/experience',
+        add:'/add_experience',
+        edit:'/edit_experience',
+        delete:'/delete_experience',
+    },
+    
+]
