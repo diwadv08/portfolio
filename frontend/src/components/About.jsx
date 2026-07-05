@@ -44,7 +44,7 @@ function About() {
   let cols=[6,6,6,6,12]
   let icons=['fa-brands fa-whatsapp','fa-brands fa-github','fa-brands fa-linkedin','fa fa-envelope','fa fa-download'];
   let usernames=['9489460029','diwadv08','dv813','diwadv813','Download Resume'];
-  let contact_links=['tel:'+usernames[0],'https://github.com/diwadv08','https://www.linkedin.com/in/dv813','mailto:'+usernames[3]+'@gmail.com',resume_pdf];
+  let contact_links=['tel:'+usernames[0],'https://github.com/diwadv08','https://www.linkedin.com/in/dv813','mailto:'+usernames[3]+'@gmail.com',about?.[0]?.resume || '#'];
 
   return (
     <Container fluid id={myLinks[0].toLowerCase()}  className='home-section-padding bg-dark'>
@@ -69,21 +69,40 @@ function About() {
                             <p className='text-secondary text-center pe-lg-5'>{e.description?e.description:''}</p>
                             <h1 className='role text-center pe-lg-5'>MERN<span className='ps-3'>Stack Developer</span></h1>
                             <div className="row me-lg-5 mt-4">
-                              {usernames.map((e,index)=>{
-                                return (
-                                    <div className={"col-lg-"+cols[index]+" mb-3 col-12"} title={'Click Here'} key={index}>
-                                      <div className={"card "+bg[index]+" py-md-2 py-1"}>
-                                        <a href={contact_links[index]} target='_blank'>
-                                          <div className="d-flex justify-content-center align-items-center">
-                                            <h1 style={{fontSize:'27px'}}><i className={icons[index]+' me-2'}></i></h1>
-                                            <h6 className='mt-1'>{usernames[index]}</h6>
-                                          </div>
-                                        </a>
+                            {usernames.slice(0, 4).map((e, index) => {
+                              return (
+                                <div className={"col-lg-" + cols[index] + " mb-3 col-12"} key={index}>
+                                  <div className={"card " + bg[index] + " py-md-2 py-1"}>
+                                    <a href={contact_links[index]} target="_blank" rel="noreferrer">
+                                      <div className="d-flex justify-content-center align-items-center">
+                                        <h1 style={{ fontSize: '27px' }}>
+                                          <i className={icons[index] + ' me-2'}></i>
+                                        </h1>
+                                        <h6 className="mt-1">{usernames[index]}</h6>
                                       </div>
+                                    </a>
                                   </div>
-                                )
-                              })}
+                                </div>
+                              );
+                            })}
+                          </div>
+                          <div className="row mt-4 me-lg-5">
+                            <div className="col-12">
+                              <div className="card bg-social2 py-3 text-center">
+                                <a
+                                  href={about?.[0]?.resume}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-decoration-none text-dark"
+                                >
+                                  <div className="d-flex justify-content-center align-items-center gap-3">
+                                    <i className="fa fa-file-pdf" style={{ fontSize: "28px" }}></i>
+                                    <h5 className="mb-0">Download Resume</h5>
+                                  </div>
+                                </a>
+                              </div>
                             </div>
+                          </div>
                 </div>
                
               </div>)

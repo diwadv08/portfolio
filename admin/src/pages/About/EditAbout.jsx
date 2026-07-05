@@ -1,136 +1,207 @@
-import React from 'react'
-import { useState,useEffect } from 'react';
-import { Container} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
-import file_upload from "../../assets/images/file-upload.png";
 import url from '../../url/nodeFile';
 import axios from "axios";
 import { nav_links } from '../../common/mylinks';
-import { cloud_url } from '../../url/cloudUrl';
+import { cloud_url, cloud_pdf_url } from '../../url/cloudUrl';
+
 function AddAbout() {
-  let _id=useParams();
-  _id=_id.id;
-  let defaultData={
-    _id:'',
-    name:'',
-    description:'',
-    title:'',
-    mobile:'',
-    email:'',
-  }
+  let { id } = useParams();
 
-  const [subBtn,seytSubBtn]=useState('Update About');
-  const [data,setData]=useState(defaultData)
-  let navto=useNavigate();
-  const [image,setImage]=useState(false)
-  
-  useEffect(()=>{
-    fetch(`${url}/about/${_id}`)
-    .then((data)=>(data.json()))
-    .then((datas)=>{
-        setData(datas)
-    })  
-  },[])
+  const defaultData = {
+    _id: '',
+    name: '',
+    description: '',
+    title: '',
+    mobile: '',
+    email: '',
+  };
 
+  const [subBtn, setSubBtn] = useState('Update About');
+  const [data, setData] = useState(defaultData);
+  const [image, setImage] = useState(false);
+  const [resume, setResume] = useState(false);
 
+  const navto = useNavigate();
 
-  const changeBox=(e)=>{    
-    setData((prev)=>(
-        {...prev,[e.target.name]:e.target.value}
-    ))
-  }
-  const SubmitFun=async(e)=>{
+  // FETCH DATA
+  useEffect(() => {
+    fetch(`${url}/about/${id}`)
+      .then(res => res.json())
+      .then(datas => setData(datas));
+  }, [id]);
+
+  // INPUT CHANGE
+  const changeBox = (e) => {
+    setData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  // IMAGE CHANGE
+  const changeImage = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  // RESUME CHANGE
+  const changeResume = (e) => {
+    setResume(e.target.files[0]);
+  };
+
+  // SUBMIT
+  const SubmitFun = async (e) => {
     e.preventDefault();
+
     const form = new FormData();
-    seytSubBtn('Updating...')
-    if(image){
-        const cloud_upload = new FormData();
-        cloud_upload.append('file', image);
-        cloud_upload.append('upload_preset','portfolio' );
-        try {
-        const response = await axios.post(cloud_url, cloud_upload, {
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
-        });
-        
-        form.append('image', response.data.url);
+    setSubBtn('Updating...');
 
-        } catch (error) {
-            console.error('Error uploading image and data:', error);
-        }
-    }
-    form.append('id',data._id);
-    form.append('name',data.name);
-    form.append('description',data.description);
-    form.append('title',data.title);
-    form.append('mobile',data.mobile);
-    form.append('email',data.email);
-    const response = await axios.post(url+'/about_add', form, {
+    try {
+      // ✅ IMAGE UPLOAD (correct endpoint)
+      if (image) {
+        const imgData = new FormData();
+        imgData.append('file', image);
+        imgData.append('upload_preset', 'portfolio');
+
+        const res = await axios.post(cloud_url, imgData);
+
+        form.append('image', res.data.secure_url);
+      }
+
+      // ✅ RESUME UPLOAD (correct endpoint)
+      if (resume) {
+        const pdfData = new FormData();
+        pdfData.append('file', resume);
+        pdfData.append('upload_preset', 'portfolio');
+
+        const res = await axios.post(cloud_pdf_url, pdfData);
+
+        form.append('resume', res.data.secure_url);
+      }
+
+      // TEXT DATA
+      form.append('id', data._id);
+      form.append('name', data.name);
+      form.append('description', data.description);
+      form.append('title', data.title);
+      form.append('mobile', data.mobile);
+      form.append('email', data.email);
+
+      // API CALL
+      await axios.post(url + '/about_add', form, {
         withCredentials: true,
-    headers: {
-        'Content-Type': 'multipart/form-data',
-    },
-    
-    });
-    navto(nav_links[0].url);
-    
-  }
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
-  const changeImage=(e)=>{
-    setImage(e.target.files[0])
-  }
+      setSubBtn('Updated ✔');
+      navto(nav_links[0].url);
 
-    
+    } catch (err) {
+      console.error(err);
+      setSubBtn('Update Failed');
+    }
+  };
+
   return (
-        <Container className='w-75 my-4' style={{height:"450px"}}>
-            <div className='row bg-dark p-5 text-light' style={{borderRadius:"30px",boxShadow:"0px 0px 30px grey"}}>
-                <div className="col-12 mb-2">
-                    <h4>Update Info</h4>
-                </div>
-                <form onSubmit={SubmitFun}>
-                    <div className="row">
-                        <div className="col-lg-9">
-                            <div className="row">
-                                <input type="text" name='_id' value={data._id} onChange={changeBox} hidden/>
-                                <div className="col-lg-6 mb-3">
-                                    <label htmlFor="">Name</label>
-                                    <input type="text" className='form-control' name='name' value={data.name} onChange={changeBox} placeholder='Enter Name'/>
-                                </div>
-                                <div className="col-lg-6 mb-3">
-                                    <label htmlFor="">Mobile Number</label>
-                                    <input type="text" className='form-control' name='mobile' value={data.mobile} onChange={changeBox} placeholder='Enter Mobile'/>
-                                </div>
-                                <div className="col-lg-6 mb-3">
-                                    <label htmlFor="">Email Id</label>
-                                    <input type="email" className='form-control' name='email' value={data.email} onChange={changeBox} placeholder='Enter Email Id'/>
-                                </div>
-                                <div className="col-lg-6 mb-3">
-                                    <label htmlFor="">Title</label>
-                                    <input type="text" className='form-control' name='title' value={data.title} onChange={changeBox} placeholder='Enter Title'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3  text-lg-end">
-                            <label htmlFor="image-upload">
-                                <img src={image?URL.createObjectURL(image):data.image} style={{width:'100%',background:'white',height:'200px'}} alt="" />
-                            </label>
-                            <input type="file" onChange={changeImage}  className='form-control' accept="image/*" id='image-upload' name='image' hidden/>
-                        </div>
-                        <div className="col-12 mt-1">
-                            <label htmlFor="">Enter Description</label>
-                            <textarea name="description" id="" value={data.description} placeholder='Enter Description Or Home Slogan' rows={4} onChange={changeBox} className='form-control'></textarea>
-                        </div>
-                        <div className="col-12 mt-5 mb-0">
-                            <button type="submit" className='btn btn-success form-control'>
-                                {subBtn}
-                            </button>
-                        </div>
-                    </div>
-                </form>
+    <Container className='w-75 my-4'>
+
+      <div className='row bg-dark p-5 text-light'
+        style={{ borderRadius: "30px", boxShadow: "0px 0px 30px grey" }}>
+
+        <div className="col-12 mb-3">
+          <h4>Update About Info</h4>
+        </div>
+
+        <form onSubmit={SubmitFun} className="row">
+
+          {/* LEFT INPUTS */}
+          <div className="col-lg-9">
+            <div className="row">
+
+              <input type="hidden" name="_id" value={data._id} />
+
+              <div className="col-lg-6 mb-3">
+                <label>Name</label>
+                <input name="name" value={data.name}
+                  onChange={changeBox} className="form-control" />
+              </div>
+
+              <div className="col-lg-6 mb-3">
+                <label>Mobile</label>
+                <input name="mobile" value={data.mobile}
+                  onChange={changeBox} className="form-control" />
+              </div>
+
+              <div className="col-lg-6 mb-3">
+                <label>Email</label>
+                <input name="email" value={data.email}
+                  onChange={changeBox} className="form-control" />
+              </div>
+
+              <div className="col-lg-6 mb-3">
+                <label>Title</label>
+                <input name="title" value={data.title}
+                  onChange={changeBox} className="form-control" />
+              </div>
+
             </div>
-        </Container>
-    )
+          </div>
+
+          {/* IMAGE */}
+          <div className="col-lg-3 text-end">
+            <label htmlFor="image-upload">
+              <img
+                src={image ? URL.createObjectURL(image) : data.image}
+                style={{ width: "100%", height: "200px", background: "white" }}
+                alt=""
+              />
+            </label>
+            <input
+              type="file"
+              id="image-upload"
+              hidden
+              accept="image/*"
+              onChange={changeImage}
+            />
+          </div>
+
+          {/* RESUME */}
+          <div className="col-12 mt-3">
+            <label>Upload Resume (PDF)</label>
+            <input
+              type="file"
+              className="form-control"
+              accept="application/pdf"
+              onChange={changeResume}
+            />
+          </div>
+
+          {/* DESCRIPTION */}
+          <div className="col-12 mt-3">
+            <label>Description</label>
+            <textarea
+              name="description"
+              value={data.description}
+              onChange={changeBox}
+              rows={4}
+              className="form-control"
+            />
+          </div>
+
+          {/* SUBMIT */}
+          <div className="col-12 mt-4">
+            <button className="btn btn-success w-100">
+              {subBtn}
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </Container>
+  );
 }
 
-export default AddAbout
+export default AddAbout;
