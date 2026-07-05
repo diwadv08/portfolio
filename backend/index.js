@@ -9,12 +9,15 @@ const seedAdmin = require('./seed/seedAdmin');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Normalize allowed origins from env and remove trailing slash if present
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
 .split(',')
-.map((o) => o.trim().replace(/\$/, '')).filter(Boolean);
+.map((o) => o.trim().replace(/\$/, ''))
+.filter(Boolean);
 
 app.use(cors({
 origin: function (origin, callback) {
+// Allow requests without origin (Postman, curl, server-to-server)
 if (!origin) return callback(null, true);
 
 const normalizedOrigin = origin.trim().replace(/\/$/, '');
@@ -31,8 +34,6 @@ return callback(new Error(`CORS blocked for origin: ${origin}`));
 },
 credentials: true,
 }));
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -64,6 +65,11 @@ app.use('/api', skill_routes);
 app.use('/api', about_routes);
 app.use('/api', education_routes);
 app.use('/api', experience_routes);
+
+// Health / test route
+app.get('/', (req, res) => {
+res.send('Portfolio backend is running');
+});
 
 // Start server for local + Render
 app.listen(PORT, () => {
