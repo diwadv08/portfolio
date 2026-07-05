@@ -58,7 +58,7 @@ function Skill() {
                    </thead>
                         {(skillsData)?skillsData.map((e,i)=>{
                             return (
-                            <tbody key={i} className='bg-light'>
+                            <tbody key={i}>
                                 <tr>
                                     <td>{num++}</td>
                                     <td>{e.language}</td>
