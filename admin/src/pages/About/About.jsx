@@ -34,6 +34,7 @@ function About() {
                        <tr>
                             <th>S.No</th>
                             <th>Image</th>
+                            <th>Resume</th>
                             <th>Name</th>
                             <th>Title</th>
                             <th>Mobile</th>
@@ -51,6 +52,9 @@ function About() {
                                       <center>
                                         <img src={e.image} height={"60px"} alt="" />
                                       </center>
+                                    </td>
+                                    <td>
+                                      <Link to={e.resume} target='_blank'>View Resume</Link>
                                     </td>
                                     <td>{e.name}</td>
                                     <td>{e.title}</td>

@@ -43,8 +43,8 @@ function About() {
   let bg=['bg-social','bg-social','bg-social','bg-social','bg-social2'];
   let cols=[6,6,6,6,12]
   let icons=['fa-brands fa-whatsapp','fa-brands fa-github','fa-brands fa-linkedin','fa fa-envelope','fa fa-download'];
-  let usernames=['9489460029','diwadv08','dv813','diwadv813','Download Resume'];
-  let contact_links=['tel:'+usernames[0],'https://github.com/diwadv08','https://www.linkedin.com/in/dv813','mailto:'+usernames[3]+'@gmail.com',about?.[0]?.resume || '#'];
+  let usernames=['9489460029','diwadv08','dv813','diwadv813'];
+  let contact_links=['tel:'+usernames[0],'https://github.com/diwadv08','https://www.linkedin.com/in/dv813','mailto:'+usernames[3]+'@gmail.com'];
 
   return (
     <Container fluid id={myLinks[0].toLowerCase()}  className='home-section-padding bg-dark'>
@@ -97,7 +97,7 @@ function About() {
                                 >
                                   <div className="d-flex justify-content-center align-items-center gap-3">
                                     <i className="fa fa-file-pdf" style={{ fontSize: "28px" }}></i>
-                                    <h5 className="mb-0">Download Resume</h5>
+                                    <h5 className="mb-0">View Resume</h5>
                                   </div>
                                 </a>
                               </div>
