@@ -3,41 +3,42 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const serverless = require('serverless-http');
 
 const seedAdmin = require('./seed/seedAdmin');
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Allowed origins for cross-site cookie based auth (public site + admin panel).
-// Configure via ALLOWED_ORIGINS in .env as a comma separated list.
+// Allowed origins for cross-site cookie based auth
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
-    .split(',')
-    .map((o) => o.trim())
-    .filter(Boolean);
+.split(',')
+.map((o) => o.trim())
+.filter(Boolean);
 
 // Middlewares
 app.use(cors({
-    origin: function (origin, callback) {
-        // allow non-browser tools (curl/postman) and any configured origin
-        if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
-            return callback(null, true);
-        }
-        return callback(new Error('Not allowed by CORS'));
-    },
-    credentials: true, // required so the httpOnly session cookie is sent/received
+origin: function (origin, callback) {
+if (!origin) return callback(null, true);
+
+if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+  return callback(null, true);
+}
+return callback(new Error(`CORS blocked for origin: ${origin}`));
+},
+credentials: true,
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(async () => {
-    console.log('✅ MongoDB connected');
-    await seedAdmin();
-  })
-  .catch((err) => console.error('❌ MongoDB connection error:', err));
+mongoose.connect(process.env.MONGODB_URI)
+.then(async () => {
+console.log('✅ MongoDB connected');
+await seedAdmin();
+})
+.catch((err) => console.error('❌ MongoDB connection error:', err));
 
 // Static Files
 app.use('/images', express.static('uploads'));
@@ -58,16 +59,9 @@ app.use('/api', about_routes);
 app.use('/api', education_routes);
 app.use('/api', experience_routes);
 
-// Export as serverless function (🚀 Fix for Vercel)
-const PORT = process.env.PORT || 5000;
+// Start server for local + Render
+app.listen(PORT, () => {
+console.log(`🚀 Backend running on port ${PORT}`);
+});
 
-// Run locally
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`🚀 Backend running on http://localhost:${PORT}`);
-  });
-}
-
-// Export for Vercel / serverless
 module.exports = app;
-module.exports.handler = serverless(app);
