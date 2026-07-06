@@ -20,8 +20,6 @@ function About() {
       setLoading(false);
     })  
   },[])
-
-
   useEffect(() => {
     let index = 0;
 
