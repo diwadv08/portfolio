@@ -5,7 +5,6 @@ import { useState,useEffect } from 'react';
 import url from '../url/nodeFile';
 import { motion } from 'framer-motion';
 import { left, zoomIn } from '../animation/variant';
-import resume_pdf from "../pdf/resume.pdf";
 import Skeleton from 'react-loading-skeleton';
 function About() {
   let[about,setAbout]=useState();
